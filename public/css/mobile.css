@@ -23,7 +23,6 @@
   font-display: swap;
 }
 
-
 /* ===== CSS CUSTOM PROPERTIES (VARIABLES) ===== */
 :root {}
 
@@ -34,12 +33,62 @@
   box-sizing: border-box;
 }
 
-html {
-  font-size: 16px;
-}
-
 body {
   font-family: 'Rubik', sans-serif;
   font-size: 1rem;
   line-height: 1.5;
+  color: #333;
+}
+
+/* Header styles - Mobile first */
+.header {
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 1rem 0;
+}
+
+.header__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__brand {
+  font-weight: bold;
+  color: #333;
+}
+
+.header__brand-link {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.header__brand-link:hover {
+  color: #007bff;
+}
+
+.header__tools {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+}
+
+.header__account-link {
+  text-decoration: none;
+  color: #333;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.header__account-link:hover {
+  background-color: #f8f9fa;
+  border-color: #007bff;
+  color: #007bff;
 }
