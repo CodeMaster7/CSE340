@@ -1,3 +1,4 @@
-h1 {
-    color: red;
+/* Tablet styles - 768px and up */
+.header__container {
+    padding: 0 2rem;
 }
