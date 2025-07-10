@@ -1,4 +1,21 @@
 /* Desktop styles - 1024px and up */
+html {
+    background-image: url('/images/site/checkerboard.jpg');
+    background-repeat: repeat;
+}
+
+body {
+    max-width: 1200px;
+    margin: 2rem auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    min-height: 100vh;
+    background-color: #fff;
+}
+
 .header {
     padding: 1.5rem 0;
+}
+
+.header__brand {
+    font-size: 2rem;
 }
