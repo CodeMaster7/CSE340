@@ -2,3 +2,59 @@
 .header__container {
     padding: 0 2rem;
 }
+
+.header__brand {
+    font-size: 1.8rem;
+}
+
+.header__account-link {
+    font-size: 1rem;
+}
+
+/* Hero section - Tablet styles */
+.hero {
+    padding: 3rem 0;
+}
+
+.hero__container {
+    padding: 0 2rem;
+}
+
+.hero__heading {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.hero__content {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.hero__text {
+    flex: 1;
+}
+
+.hero__product-name {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero__features {
+    margin-bottom: 2rem;
+}
+
+.hero__feature {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.hero__cta-button {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+.hero__car-image {
+    max-width: 350px;
+}
