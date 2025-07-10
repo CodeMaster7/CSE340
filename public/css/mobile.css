@@ -92,3 +92,42 @@ body {
   border-color: #007bff;
   color: #007bff;
 }
+
+/* Navigation styles - Mobile first */
+.navigation {
+  background-color: #343a40;
+  padding: 0.5rem 0;
+}
+
+.navigation__list {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+}
+
+.navigation__item {
+  flex: 1;
+}
+
+.navigation__link {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.navigation__link:hover {
+  background-color: #495057;
+}
+
+.navigation__link:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
