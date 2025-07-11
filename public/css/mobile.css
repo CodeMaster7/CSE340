@@ -191,8 +191,10 @@ h1.hero__heading {
   font-size: var(--font-size-xl);
   font-weight: bold;
   color: var(--text-color);
-  margin-bottom: var(--spacing-lg);
+  margin: 0 auto var(--spacing-lg);
   text-align: center;
+  max-width: var(--container-max-width);
+  padding: 0 var(--spacing-sm);
 }
 
 .hero__content {
