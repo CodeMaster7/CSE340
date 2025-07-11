@@ -26,8 +26,8 @@
 /* ===== CSS CUSTOM PROPERTIES (VARIABLES) ===== */
 :root {
   /* Colors */
-  --primary-color: #007bff;
-  --primary-hover: #0056b3;
+  --primary-color: #0056b3;
+  --primary-hover: #004085;
   --dark-color: #343a40;
   --dark-hover: #495057;
   --light-color: #f8f9fa;
@@ -187,7 +187,7 @@ body {
   padding: 0 var(--spacing-sm);
 }
 
-.hero__heading {
+h1.hero__heading {
   font-size: var(--font-size-xl);
   font-weight: bold;
   color: var(--text-color);
