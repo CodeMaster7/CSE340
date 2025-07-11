@@ -40,7 +40,7 @@ main {
     padding: 0 var(--spacing-xxl);
 }
 
-h1.hero__heading {
+.hero__heading {
     font-size: 4rem;
     margin: 0 auto var(--spacing-xxl);
     text-align: center;
