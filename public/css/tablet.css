@@ -68,7 +68,6 @@ main {
     max-width: 350px;
 }
 
-/* Hero section should span full width */
 .hero {
     grid-column: 1 / -1;
 }
