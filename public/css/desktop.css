@@ -41,7 +41,7 @@ main {
 }
 
 h1.hero__heading {
-    font-size: var(--font-size-hero);
+    font-size: 4rem;
     margin: 0 auto var(--spacing-xxl);
     text-align: center;
     max-width: var(--container-max-width);

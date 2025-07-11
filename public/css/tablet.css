@@ -30,7 +30,7 @@ main {
 }
 
 h1.hero__heading {
-    font-size: var(--font-size-xxxl);
+    font-size: 3rem;
     margin: 0 auto var(--spacing-xl);
     text-align: center;
     max-width: var(--container-max-width);
