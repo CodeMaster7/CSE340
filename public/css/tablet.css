@@ -1,6 +1,15 @@
 /* Tablet styles - 768px and up */
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: var(--spacing-xxl) var(--spacing-lg);
+}
+
 .header__container {
-    padding: 0 2rem;
+    padding: 0 var(--spacing-lg);
 }
 
 .header__brand {
@@ -8,27 +17,27 @@
 }
 
 .header__account-link {
-    font-size: 1rem;
+    font-size: var(--font-size-sm);
 }
 
 /* Hero section - Tablet styles */
 .hero {
-    padding: 3rem 0;
+    padding: var(--spacing-md) 0;
 }
 
 .hero__container {
-    padding: 0 2rem;
+    padding: 0 var(--spacing-lg);
 }
 
 .hero__heading {
-    font-size: 2rem;
-    margin-bottom: 2.5rem;
+    font-size: var(--font-size-xxxl);
+    margin-bottom: var(--spacing-xl);
 }
 
 .hero__content {
     display: flex;
     flex-direction: row;
-    gap: 1.5rem;
+    gap: var(--spacing-md);
     align-items: center;
 }
 
@@ -37,24 +46,94 @@
 }
 
 .hero__product-name {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-md);
 }
 
 .hero__features {
-    margin-bottom: 2rem;
+    margin-bottom: var(--spacing-lg);
 }
 
 .hero__feature {
-    font-size: 1rem;
+    font-size: var(--font-size-sm);
     margin-bottom: 0.75rem;
 }
 
 .hero__cta-button {
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
+    padding: var(--spacing-sm) var(--spacing-xl);
+    font-size: var(--font-size-md);
 }
 
 .hero__car-image {
     max-width: 350px;
+}
+
+/* Hero section should span full width */
+.hero {
+    grid-column: 1 / -1;
+}
+
+/* Upgrades section - Tablet styles */
+.upgrades {
+    padding: 0;
+    background-color: transparent;
+}
+
+.upgrades__container {
+    padding: 0;
+}
+
+.upgrades__heading {
+    font-size: var(--font-size-xxl);
+    margin-bottom: var(--spacing-xl);
+    text-align: left;
+}
+
+.upgrades__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+}
+
+.upgrades__item {
+    max-width: 180px;
+}
+
+.upgrades__image-wrapper {
+    height: 90px;
+    padding: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.upgrades__title {
+    font-size: var(--font-size-sm);
+}
+
+/* Reviews section - Tablet styles */
+.reviews {
+    padding: 0;
+    background-color: transparent;
+}
+
+.reviews__container {
+    padding: 0;
+}
+
+.reviews__heading {
+    font-size: var(--font-size-xxl);
+    margin-bottom: var(--spacing-xl);
+    text-align: left;
+}
+
+.reviews__text {
+    font-size: var(--font-size-sm);
+}
+
+/* Footer styles - Tablet */
+#footer {
+    padding: var(--spacing-xl) 0;
+}
+
+.footer__copyright {
+    font-size: var(--font-size-sm);
+    padding: 0 var(--spacing-lg);
 }
