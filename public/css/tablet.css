@@ -29,7 +29,7 @@ main {
     padding: 0 var(--spacing-lg);
 }
 
-.hero__heading {
+h1.hero__heading {
     font-size: var(--font-size-xxxl);
     margin-bottom: var(--spacing-xl);
 }
