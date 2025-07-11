@@ -42,7 +42,10 @@ main {
 
 h1.hero__heading {
     font-size: var(--font-size-hero);
-    margin-bottom: var(--spacing-xxl);
+    margin: 0 auto var(--spacing-xxl);
+    text-align: center;
+    max-width: var(--container-max-width);
+    padding: 0 var(--spacing-xxl);
 }
 
 .hero__content {
