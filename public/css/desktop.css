@@ -40,7 +40,7 @@ main {
     padding: 0 var(--spacing-xxl);
 }
 
-.hero__heading {
+h1.hero__heading {
     font-size: var(--font-size-hero);
     margin-bottom: var(--spacing-xxl);
 }
