@@ -1,4 +1,6 @@
-/* ===== LOCAL FONT DECLARATIONS ===== */
+/* ================================================================
+   LOCAL FONT DECLARATIONS
+   ================================================================ */
 @font-face {
   font-family: 'Rubik';
   src: url('/fonts/Rubik-Regular.ttf') format('truetype');
@@ -23,7 +25,9 @@
   font-display: swap;
 }
 
-/* ===== CSS CUSTOM PROPERTIES (VARIABLES) ===== */
+/* ================================================================
+   CSS CUSTOM PROPERTIES (VARIABLES)
+   ================================================================ */
 :root {
   /* Colors */
   --primary-color: #0056b3;
@@ -69,7 +73,9 @@
   --shadow-container: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-/* ===== RESET & BASE STYLES ===== */
+/* ================================================================
+   RESET & BASE STYLES
+   ================================================================ */
 *,
 *::before,
 *::after {
@@ -83,7 +89,15 @@ body {
   color: var(--text-color);
 }
 
-/* Header styles - Mobile first */
+main {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* ================================================================
+   HEADER STYLES - MOBILE FIRST
+   ================================================================ */
 .header {
   background-color: var(--white);
   border-bottom: 1px solid #e0e0e0;
@@ -136,7 +150,9 @@ body {
   color: var(--primary-color);
 }
 
-/* Navigation styles - Mobile first */
+/* ================================================================
+   NAVIGATION STYLES - MOBILE FIRST
+   ================================================================ */
 .navigation {
   background-color: var(--dark-color);
   padding: var(--spacing-xs) 0;
@@ -175,7 +191,9 @@ body {
   outline-offset: 2px;
 }
 
-/* Hero section styles - Mobile first */
+/* ================================================================
+   HERO SECTION STYLES - MOBILE FIRST
+   ================================================================ */
 .hero {
   padding: var(--spacing-lg) 0;
   background-color: var(--white);
@@ -198,15 +216,24 @@ body {
 }
 
 .hero__content {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xxl);
+  justify-content: flex-end;
   align-items: center;
+  min-height: 250px;
 }
 
 .hero__text {
-  flex: 1;
-  text-align: center;
+  position: absolute;
+  left: var(--spacing-xxl);
+  top: 35%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: var(--border-radius-md);
+  max-width: 240px;
+  box-shadow: var(--shadow-light);
+  text-align: left;
 }
 
 .hero__product-name {
@@ -218,13 +245,11 @@ body {
 
 .hero__features {
   list-style: none;
-  margin-bottom: var(--spacing-md);
   padding: 0;
 }
 
 .hero__feature {
   color: var(--primary-color);
-  margin-bottom: var(--spacing-xs);
   font-size: var(--font-size-xs);
 }
 
@@ -232,12 +257,13 @@ body {
   background-color: var(--primary-color);
   color: var(--white);
   border: none;
-  padding: 0.75rem var(--spacing-lg);
+  padding: 0.25rem var(--spacing-sm);
   font-size: var(--font-size-sm);
   font-weight: 500;
   border-radius: var(--border-radius-sm);
   cursor: pointer;
   transition: background-color var(--transition-fast);
+  width: 100%;
 }
 
 .hero__cta-button:hover {
@@ -245,18 +271,23 @@ body {
 }
 
 .hero__image {
-  flex: none;
+  position: relative;
+  z-index: 1;
   max-width: 100%;
+  transform: translateX(var(--spacing-xxxl));
 }
 
 .hero__car-image {
-  width: 100%;
+  width: 75%;
   height: auto;
-  max-width: 300px;
+  max-width: 320px;
   border-radius: var(--border-radius-md);
+  display: block;
 }
 
-/* Upgrades section styles - Mobile first */
+/* ================================================================
+   UPGRADES SECTION STYLES - MOBILE FIRST
+   ================================================================ */
 .upgrades {
   padding: var(--spacing-lg) 0;
   background-color: var(--light-color);
@@ -289,7 +320,7 @@ body {
   padding: var(--spacing-sm);
   text-align: center;
   width: 100%;
-  max-width: 150px;
+  max-width: 180px;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
@@ -324,7 +355,9 @@ body {
   line-height: 1.2;
 }
 
-/* Reviews section styles - Mobile first */
+/* ================================================================
+   REVIEWS SECTION STYLES - MOBILE FIRST
+   ================================================================ */
 .reviews {
   padding: var(--spacing-lg) 0;
   background-color: var(--white);
@@ -369,7 +402,9 @@ body {
   line-height: 1.4;
 }
 
-/* Footer styles - Mobile first */
+/* ================================================================
+   FOOTER STYLES - MOBILE FIRST
+   ================================================================ */
 #footer {
   background-color: var(--dark-color);
   padding: var(--spacing-lg) 0;
