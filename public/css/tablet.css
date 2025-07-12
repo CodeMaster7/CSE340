@@ -1,11 +1,16 @@
-/* Tablet styles - 768px and up */
+/* ================================================================
+   TABLET STYLES - 768px and up
+   ================================================================ */
 main {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-lg);
     max-width: var(--container-max-width);
     margin: 0 auto;
     padding: var(--spacing-xxl) var(--spacing-lg);
+}
+
+main::after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .header__container {
@@ -20,7 +25,9 @@ main {
     font-size: var(--font-size-sm);
 }
 
-/* Hero section - Tablet styles */
+/* ================================================================
+   HERO SECTION - TABLET STYLES
+   ================================================================ */
 .hero {
     padding: var(--spacing-md) 0;
 }
@@ -38,47 +45,84 @@ main {
 }
 
 .hero__content {
+    position: relative;
     display: flex;
-    flex-direction: row;
-    gap: var(--spacing-md);
+    justify-content: flex-end;
     align-items: center;
+    min-height: 250px;
 }
 
 .hero__text {
-    flex: 1;
+    position: absolute;
+    left: 30%;
+    top: 35%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: var(--border-radius-md);
+    max-width: 420px;
+    box-shadow: var(--shadow-light);
+    text-align: left;
+    padding: var(--spacing-md);
 }
 
 .hero__product-name {
-    font-size: var(--font-size-xl);
-    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
 }
 
 .hero__features {
-    margin-bottom: var(--spacing-lg);
+    list-style: none;
+    padding: 0;
 }
 
 .hero__feature {
-    font-size: var(--font-size-sm);
-    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+    font-size: var(--font-size-xs);
 }
 
 .hero__cta-button {
-    padding: var(--spacing-sm) var(--spacing-xl);
-    font-size: var(--font-size-md);
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 0.25rem var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+    width: 100%;
+}
+
+.hero__cta-button:hover {
+    background-color: var(--primary-hover);
+}
+
+.hero__image {
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+    transform: translateX(var(--spacing-lg));
 }
 
 .hero__car-image {
-    max-width: 350px;
+    width: 85%;
+    height: auto;
+    max-width: 450px;
+    border-radius: var(--border-radius-md);
+    display: block;
 }
 
-.hero {
-    grid-column: 1 / -1;
-}
-
-/* Upgrades section - Tablet styles */
+/* ================================================================
+   UPGRADES SECTION - TABLET STYLES
+   ================================================================ */
 .upgrades {
-    padding: 0;
-    background-color: transparent;
+    display: inline-block;
+    width: 48%;
+    vertical-align: top;
+    margin-right: 2%;
 }
 
 .upgrades__container {
@@ -92,6 +136,7 @@ main {
 }
 
 .upgrades__grid {
+    display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-lg);
 }
@@ -110,10 +155,15 @@ main {
     font-size: var(--font-size-sm);
 }
 
-/* Reviews section - Tablet styles */
+/* ================================================================
+   REVIEWS SECTION - TABLET STYLES
+   ================================================================ */
 .reviews {
-    padding: 0;
-    background-color: transparent;
+    display: inline-block;
+    width: 48%;
+    vertical-align: top;
+    margin-left: 2%;
+    float: right;
 }
 
 .reviews__container {
@@ -130,7 +180,9 @@ main {
     font-size: var(--font-size-sm);
 }
 
-/* Footer styles - Tablet */
+/* ================================================================
+   FOOTER STYLES - TABLET
+   ================================================================ */
 #footer {
     padding: var(--spacing-xl) 0;
 }
