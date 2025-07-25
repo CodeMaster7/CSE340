@@ -201,6 +201,13 @@ main::after {
 }
 
 /* ================================================================
+   CLASSIFICATION GRID STYLES - DESKTOP STYLES
+   ================================================================ */
+.classification-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* ================================================================
    FOOTER STYLES - DESKTOP
    ================================================================ */
 #footer {
@@ -210,4 +217,33 @@ main::after {
 .footer__copyright {
     font-size: var(--font-size-md);
     padding: 0 var(--spacing-xxl);
+}
+
+/* ================================================================
+   ERROR PAGE STYLES - DESKTOP STYLES
+   ================================================================ */
+
+.error-page {
+    padding: var(--spacing-xxl) 0;
+}
+
+.error-page__container {
+    padding: 0 var(--spacing-xxl);
+    max-width: 600px;
+}
+
+/* Error Message - Desktop */
+.error-message__title {
+    font-size: var(--font-size-xxxl);
+    margin-bottom: var(--spacing-lg);
+}
+
+.error-message__text {
+    font-size: var(--font-size-lg);
+}
+
+/* Error Navigation - Desktop */
+.error-nav__button {
+    padding: var(--spacing-lg) var(--spacing-xl);
+    font-size: var(--font-size-lg);
 }
