@@ -180,6 +180,13 @@ main::after {
 }
 
 /* ================================================================
+   CLASSIFICATION GRID STYLES - TABLET STYLES
+   ================================================================ */
+.classification-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* ================================================================
    FOOTER STYLES - TABLET
    ================================================================ */
 #footer {
@@ -189,4 +196,32 @@ main::after {
 .footer__copyright {
     font-size: var(--font-size-sm);
     padding: 0 var(--spacing-lg);
+}
+
+/* ================================================================
+   ERROR PAGE STYLES - TABLET STYLES
+   ================================================================ */
+
+.error-page {
+    padding: var(--spacing-xl) 0;
+}
+
+.error-page__container {
+    padding: 0 var(--spacing-lg);
+    max-width: 500px;
+}
+
+/* Error Message - Tablet */
+.error-message__title {
+    font-size: var(--font-size-xxl);
+}
+
+.error-message__text {
+    font-size: var(--font-size-md);
+}
+
+/* Error Navigation - Tablet */
+.error-nav__button {
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: var(--font-size-md);
 }
