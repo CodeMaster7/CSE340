@@ -1,0 +1,22 @@
+<!-- Simple Error Page -->
+<section class="error-page">
+	<div class="error-page__container">
+		<!-- Error Message -->
+		<div class="error-message">
+			<% if (title) { %>
+			<h1 class="error-message__title"><%= title %></h1>
+			<% } else { %>
+			<h1 class="error-message__title">Page Not Found</h1>
+			<% } %> <% if (message) { %>
+			<p class="error-message__text"><%= message %></p>
+			<% } else { %>
+			<p class="error-message__text">Sorry, the page you're looking for doesn't exist.</p>
+			<% } %>
+		</div>
+
+		<!-- Simple Navigation -->
+		<div class="error-nav">
+			<a href="/" class="error-nav__button">Go to Homepage</a>
+		</div>
+	</div>
+</section>
