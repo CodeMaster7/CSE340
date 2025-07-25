@@ -1,0 +1,17 @@
+<!-- Classification view with BEM structure -->
+<section class="classification">
+	<div class="classification__container">
+		<!-- Classification header -->
+		<% if (title) { %>
+		<header class="classification__header">
+			<h1 class="classification__title"><%= title %></h1>
+		</header>
+		<% } else { res.redirect('/') } %>
+
+		<!-- Error messages -->
+		<div class="classification__messages"><%# messages() %></div>
+
+		<!-- Classification grid content -->
+		<div class="classification__content"><%- grid %></div>
+	</div>
+</section>
