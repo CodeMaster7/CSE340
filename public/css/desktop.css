@@ -219,6 +219,66 @@ main::after {
     padding: 0 var(--spacing-xxl);
 }
 
+.footer__dev-link {
+    font-size: var(--font-size-sm);
+}
+
+/* ================================================================
+   VEHICLE DETAIL - DESKTOP STYLES (ENHANCED SIDE-BY-SIDE)
+   ================================================================ */
+.vehicle-detail-page__container {
+    padding: 0 var(--spacing-xxl);
+}
+
+/* Side-by-side layout for desktop (image left, content right) */
+.vehicle-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    min-height: 600px;
+    max-width: 1200px;
+    margin: 0 auto var(--spacing-lg);
+}
+
+/* Reset main info to vertical for desktop side-by-side */
+.vehicle-detail__main-info {
+    display: block;
+    text-align: left;
+    margin-bottom: 0;
+}
+
+.vehicle-detail__title {
+    font-size: var(--font-size-xxxl);
+    margin-bottom: var(--spacing-md);
+}
+
+.vehicle-detail__price {
+    margin: 0;
+}
+
+.vehicle-detail__image {
+    max-width: unset;
+}
+
+/* Reset specs to single column for desktop */
+.vehicle-detail__specs {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.vehicle-detail__spec {
+    font-size: var(--font-size-lg);
+    margin-bottom: 0;
+}
+
+.vehicle-detail__description-title {
+    margin: 0 0 var(--spacing-sm);
+}
+
+.vehicle-detail__description {
+    margin-top: 0;
+}
+
 /* ================================================================
    ERROR PAGE STYLES - DESKTOP STYLES
    ================================================================ */
