@@ -198,6 +198,57 @@ main::after {
     padding: 0 var(--spacing-lg);
 }
 
+.footer__dev-link {
+    font-size: var(--font-size-sm);
+}
+
+/* ================================================================
+   VEHICLE DETAIL - TABLET STYLES (SIDE-BY-SIDE LAYOUT)
+   ================================================================ */
+.vehicle-detail-page__container {
+    padding: 0 var(--spacing-lg);
+}
+
+.vehicle-detail-page__title {
+    font-size: var(--font-size-xxxl);
+}
+
+/* Keep vertical layout but make content horizontal on tablet+ */
+.vehicle-detail {
+    /* Keep stacked layout (image top, content bottom) */
+    display: block;
+}
+
+.vehicle-detail__image-section {
+    padding: var(--spacing-lg);
+    text-align: center;
+}
+
+.vehicle-detail__content {
+    padding: var(--spacing-xl);
+}
+
+/* Make main info horizontal (title left, price right) */
+.vehicle-detail__main-info {
+    text-align: left;
+    margin-bottom: var(--spacing-xl);
+}
+
+.vehicle-detail__title {
+    font-size: var(--font-size-xxl);
+    margin: 0;
+}
+
+.vehicle-detail__price {
+    font-size: var(--font-size-xxxl);
+    margin: 0;
+}
+
+/* Make specs horizontal in columns */
+.vehicle-detail__specs {
+    margin-bottom: var(--spacing-lg);
+}
+
 /* ================================================================
    ERROR PAGE STYLES - TABLET STYLES
    ================================================================ */
