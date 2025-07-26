@@ -426,7 +426,7 @@ main {
 
 .footer__dev-link {
   font-size: var(--font-size-xs);
-  color: #666;
+  color: #fff;
   text-decoration: underline;
   transition: color var(--transition-fast);
 }
