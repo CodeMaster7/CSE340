@@ -419,6 +419,22 @@ main {
   padding: 0 var(--spacing-sm);
 }
 
+.footer__dev-tools {
+  margin-top: var(--spacing-xs);
+  text-align: center;
+}
+
+.footer__dev-link {
+  font-size: var(--font-size-xs);
+  color: #666;
+  text-decoration: underline;
+  transition: color var(--transition-fast);
+}
+
+.footer__dev-link:hover {
+  color: var(--primary-color);
+}
+
 /* ================================================================
    CLASSIFICATION VIEW STYLES - MOBILE FIRST
    ================================================================ */
@@ -608,4 +624,129 @@ main {
 
 .error-nav__button:hover {
   background-color: var(--primary-hover);
+}
+
+/* ================================================================
+   VEHICLE DETAIL PAGE - MOBILE STYLES (BASE)
+   ================================================================ */
+.vehicle-detail-page {
+  padding: var(--spacing-md) 0;
+}
+
+.vehicle-detail-page__container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
+
+.vehicle-detail-page__header {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.vehicle-detail-page__title {
+  font-size: var(--font-size-xxl);
+  color: var(--primary-color);
+  margin: 0;
+  font-weight: 600;
+}
+
+.vehicle-detail-page__messages {
+  margin-bottom: var(--spacing-lg);
+}
+
+.vehicle-detail-page__content {
+  width: 100%;
+}
+
+/* ================================================================
+   VEHICLE DETAIL CONTENT - MOBILE STYLES (STACKED LAYOUT)
+   ================================================================ */
+.vehicle-detail {
+  background-color: var(--white);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-light);
+  overflow: hidden;
+  margin-bottom: var(--spacing-lg);
+}
+
+.vehicle-detail__image-section {
+  width: 100%;
+  background-color: var(--light-color);
+  padding: var(--spacing-md);
+  text-align: center;
+}
+
+.vehicle-detail__image {
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-light);
+}
+
+.vehicle-detail__content {
+  padding: var(--spacing-lg);
+}
+
+.vehicle-detail__main-info {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--light-color);
+}
+
+.vehicle-detail__title {
+  font-size: var(--font-size-xl);
+  color: var(--dark-color);
+  margin: 0 0 var(--spacing-sm) 0;
+  font-weight: 600;
+}
+
+.vehicle-detail__price {
+  font-size: var(--font-size-xxl);
+  color: var(--primary-color);
+  font-weight: 700;
+  margin: 0;
+}
+
+.vehicle-detail__specs {
+  margin-bottom: var(--spacing-lg);
+}
+
+.vehicle-detail__spec {
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-md);
+  line-height: 1.6;
+}
+
+.vehicle-detail__spec strong {
+  color: var(--dark-color);
+  font-weight: 600;
+}
+
+.vehicle-detail__description {
+  margin-top: var(--spacing-lg);
+}
+
+.vehicle-detail__description-title {
+  font-size: var(--font-size-lg);
+  color: var(--dark-color);
+  margin-bottom: var(--spacing-md);
+  font-weight: 600;
+}
+
+.vehicle-detail__description-text {
+  line-height: 1.7;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.vehicle-detail__error {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--dark-color);
+  font-size: var(--font-size-lg);
+  background-color: var(--light-color);
+  border-radius: var(--border-radius-md);
 }
