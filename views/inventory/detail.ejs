@@ -1,0 +1,17 @@
+<!-- Vehicle detail view with BEM structure -->
+<section class="vehicle-detail-page">
+	<div class="vehicle-detail-page__container">
+		<!-- Vehicle detail header -->
+		<% if (title) { %>
+		<header class="vehicle-detail-page__header">
+			<h1 class="vehicle-detail-page__title"><%= title %></h1>
+		</header>
+		<% } else { res.redirect('/') } %>
+
+		<!-- Error messages -->
+		<div class="vehicle-detail-page__messages"><%# messages() %></div>
+
+		<!-- Vehicle detail content -->
+		<div class="vehicle-detail-page__content"><%- vehicleHTML %></div>
+	</div>
+</section>
