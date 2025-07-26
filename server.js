@@ -28,6 +28,8 @@ app.use(static)
 
 // Index route
 app.get('/', utilities.handleErrors(baseController.buildHome))
+// Intentional error route for testing error handling
+app.get('/trigger-error', utilities.handleErrors(baseController.intentionalError))
 // Inventory routes
 app.use('/inv', inventoryRoute)
 // File Not Found Route - must be last route in list
