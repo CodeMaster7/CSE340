@@ -87,6 +87,67 @@ Util.buildClassificationGrid = async function (data) {
 	return grid
 }
 
+/* **************************************
+ * Build the vehicle detail view HTML
+ * ************************************ */
+Util.buildVehicleDetailHTML = async function (vehicle) {
+	let detailHTML = ''
+	if (vehicle) {
+		// Format price with US currency symbol and commas
+		const formattedPrice = new Intl.NumberFormat('en-US', {
+			style: 'currency',
+			currency: 'USD'
+		}).format(vehicle.inv_price)
+
+		// Format mileage with commas
+		const formattedMileage = new Intl.NumberFormat('en-US').format(vehicle.inv_miles)
+
+		// Using BEM naming convention for vehicle detail
+		detailHTML += '<div class="vehicle-detail">'
+
+		// Image section (left side on larger screens)
+		detailHTML += '<div class="vehicle-detail__image-section">'
+		detailHTML +=
+			'<img src="' +
+			vehicle.inv_image +
+			'" alt="Image of ' +
+			vehicle.inv_make +
+			' ' +
+			vehicle.inv_model +
+			'" class="vehicle-detail__image" />'
+		detailHTML += '</div>'
+
+		// Content section (right side on larger screens)
+		detailHTML += '<div class="vehicle-detail__content">'
+
+		// Main vehicle info (prominent display)
+		detailHTML += '<div class="vehicle-detail__main-info">'
+		detailHTML += '<h2 class="vehicle-detail__title">' + vehicle.inv_make + ' ' + vehicle.inv_model + '</h2>'
+		detailHTML += '<p class="vehicle-detail__price">' + formattedPrice + '</p>'
+		detailHTML += '</div>'
+
+		// Vehicle specifications
+		detailHTML += '<div class="vehicle-detail__specs">'
+		detailHTML += '<p class="vehicle-detail__spec"><strong>Year:</strong> ' + vehicle.inv_year + '</p>'
+		detailHTML += '<p class="vehicle-detail__spec"><strong>Mileage:</strong> ' + formattedMileage + ' miles</p>'
+		detailHTML += '<p class="vehicle-detail__spec"><strong>Color:</strong> ' + vehicle.inv_color + '</p>'
+		detailHTML += '</div>'
+
+		// Vehicle description
+		detailHTML += '<div class="vehicle-detail__description">'
+		detailHTML += '<h3 class="vehicle-detail__description-title">Vehicle Description</h3>'
+		detailHTML += '<p class="vehicle-detail__description-text">' + vehicle.inv_description + '</p>'
+		detailHTML += '</div>'
+
+		detailHTML += '</div>' // Close content section
+		detailHTML += '</div>' // Close vehicle-detail wrapper
+	} else {
+		// Error message if no vehicle found
+		detailHTML += '<p class="vehicle-detail__error">Sorry, the requested vehicle could not be found.</p>'
+	}
+	return detailHTML
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for
