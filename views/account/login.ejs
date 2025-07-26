@@ -1,0 +1,33 @@
+<!-- Login view with BEM structure -->
+<section class="login-page">
+	<div class="login-page__container">
+		<!-- Login header -->
+		<% if (title) { %>
+		<header class="login-page__header">
+			<h1 class="login-page__title"><%= title %></h1>
+		</header>
+		<% } else { res.redirect('/') } %>
+
+		<!-- Error messages -->
+		<div class="login-page__messages"><%# messages() %></div>
+
+		<!-- Login form -->
+		<div class="login-page__form">
+			<form action="/account/login" method="post">
+				<div class="login-page__form-group">
+					<label for="email" class="login-page__form-label">Email</label>
+					<input type="text" id="email" name="account_email" class="login-page__form-input" required />
+				</div>
+				<div class="login-page__form-group">
+					<label for="password" class="login-page__form-label">Password</label>
+					<input type="password" id="password" name="account_password" class="login-page__form-input" required />
+				</div>
+				<button type="submit" class="login-page__form-button">Login</button>
+			</form>
+			<p class="login-page__form-link">
+				Don't have an account?
+				<a href="/account/register" class="login-page__form-link-text">Register</a>
+			</p>
+		</div>
+	</div>
+</section>
