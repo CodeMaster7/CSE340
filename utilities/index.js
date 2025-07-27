@@ -6,7 +6,6 @@ const Util = {}
  ************************** */
 Util.getNav = async function (req, res, next) {
 	let data = await invModel.getClassifications()
-	console.log(data)
 	let list = '<ul class="navigation__list">'
 	list += '<li class="navigation__item"><a href="/" title="Home page" class="navigation__link">Home</a></li>'
 	data.rows.forEach((row) => {
