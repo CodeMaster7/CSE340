@@ -213,9 +213,7 @@ main::after {
     font-size: var(--font-size-xxxl);
 }
 
-/* Keep vertical layout but make content horizontal on tablet+ */
 .vehicle-detail {
-    /* Keep stacked layout (image top, content bottom) */
     display: block;
 }
 
@@ -228,7 +226,6 @@ main::after {
     padding: var(--spacing-xl);
 }
 
-/* Make main info horizontal (title left, price right) */
 .vehicle-detail__main-info {
     text-align: left;
     margin-bottom: var(--spacing-xl);
@@ -244,9 +241,60 @@ main::after {
     margin: 0;
 }
 
-/* Make specs horizontal in columns */
 .vehicle-detail__specs {
     margin-bottom: var(--spacing-lg);
+}
+
+/* ================================================================
+   REGISTER PAGE STYLES - TABLET STYLES
+   ================================================================ */
+.register-page__container {
+    max-width: 500px;
+    padding: 0 var(--spacing-lg);
+}
+
+.register-page__title {
+    font-size: var(--font-size-xxxl);
+}
+
+.register-page__form {
+    padding: var(--spacing-xxl);
+}
+
+.register-page__form-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.register-page__form-input {
+    padding: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+}
+
+.register-page__requirements-title {
+    font-size: var(--font-size-sm);
+}
+
+.register-page__requirement {
+    font-size: var(--font-size-sm);
+}
+
+.register-page__show-password-label {
+    font-size: var(--font-size-sm);
+}
+
+/* Center the button */
+.register-page__form-button {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    display: block;
+    margin: 0 auto var(--spacing-lg);
+    max-width: 250px;
+}
+
+/* Center the login link */
+.register-page__form-link {
+    font-size: var(--font-size-md);
+    text-align: center;
 }
 
 /* ================================================================
