@@ -9,6 +9,7 @@
 const express = require('express')
 const expressLayouts = require('express-ejs-layouts')
 const session = require('express-session')
+const bodyParser = require('body-parser')
 const env = require('dotenv').config()
 // Require files from routes, controllers, and utilities
 const static = require('./routes/static')
@@ -24,23 +25,29 @@ const app = express()
  * Middleware
  * ************************/
 // Session middleware
- app.use(session({
-  store: new (require('connect-pg-simple')(session))({
-    createTableIfMissing: true,
-    pool,
-  }),
-  secret: process.env.SESSION_SECRET,
-  resave: true,
-  saveUninitialized: true,
-  name: 'sessionId',
- }))
+app.use(
+	session({
+		store: new (require('connect-pg-simple')(session))({
+			createTableIfMissing: true,
+			pool
+		}),
+		secret: process.env.SESSION_SECRET,
+		resave: true,
+		saveUninitialized: true,
+		name: 'sessionId'
+	})
+)
 
- // Express Messages Middleware
+// Express Messages Middleware
 app.use(require('connect-flash')())
-app.use(function(req, res, next){
-  res.locals.messages = require('express-messages')(req, res)
-  next()
+app.use(function (req, res, next) {
+	res.locals.messages = require('express-messages')(req, res)
+	next()
 })
+
+// Express body parser middleware
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 /* ***********************
  * View Engine and Templates
@@ -64,7 +71,7 @@ app.use('/inv', inventoryRoute)
 app.use('/account', accountRoute)
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
-	next({ status: 404, message: 'Sorry, we appear to have lost that page.' })
+	next({ status: 404, message: 'Sorry,we appear to have lost that page.' })
 })
 
 /* ***********************
