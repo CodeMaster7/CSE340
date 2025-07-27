@@ -1,0 +1,89 @@
+<!-- Register view with BEM structure -->
+<section class="register-page">
+	<div class="register-page__container">
+		<!-- Register header -->
+		<% if (title) { %>
+		<header class="register-page__header">
+			<h1 class="register-page__title"><%= title %></h1>
+		</header>
+		<% } else { res.redirect('/') } %>
+
+		<!-- Error messages -->
+		<div class="register-page__messages"><%# messages() %></div>
+
+		<!-- Register form -->
+		<div class="register-page__form">
+			<form action="/account/register" method="post">
+				<div class="register-page__form-group">
+					<label for="first_name" class="register-page__form-label">
+						First Name
+						<span class="register-page__required">*</span>
+					</label>
+					<input
+						type="text"
+						id="first_name"
+						name="account_firstname"
+						class="register-page__form-input"
+						required
+					/>
+				</div>
+				<div class="register-page__form-group">
+					<label for="last_name" class="register-page__form-label">
+						Last Name
+						<span class="register-page__required">*</span>
+					</label>
+					<input
+						type="text"
+						id="last_name"
+						name="account_lastname"
+						class="register-page__form-input"
+						required
+					/>
+				</div>
+				<div class="register-page__form-group">
+					<label for="email" class="register-page__form-label">
+						Email
+						<span class="register-page__required">*</span>
+					</label>
+					<input type="email" id="email" name="account_email" class="register-page__form-input" required />
+				</div>
+				<div class="register-page__form-group">
+					<label for="password" class="register-page__form-label">
+						Password
+						<span class="register-page__required">*</span>
+					</label>
+					<div class="register-page__password-container">
+						<input
+							type="password"
+							id="password"
+							name="account_password"
+							class="register-page__form-input"
+							required
+							minlength="12"
+							pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$"
+							title="Password must be at least 12 characters long and contain at least one uppercase letter, one number, and one special character"
+						/>
+						<div class="register-page__show-password">
+							<input type="checkbox" id="showPassword" class="register-page__show-password-checkbox" />
+							<label for="showPassword" class="register-page__show-password-label">Show Password</label>
+						</div>
+					</div>
+					<div class="register-page__password-requirements">
+						<p class="register-page__requirements-title">Password Requirements:</p>
+						<ul class="register-page__requirements-list">
+							<li class="register-page__requirement">12 characters minimum</li>
+							<li class="register-page__requirement">At least 1 capital letter</li>
+							<li class="register-page__requirement">At least 1 number</li>
+							<li class="register-page__requirement">At least 1 special character (@$!%*?&)</li>
+						</ul>
+					</div>
+				</div>
+				<button type="submit" class="register-page__form-button">Register</button>
+			</form>
+			<p class="register-page__form-link">
+				Already have an account?
+				<a href="/account/login" class="register-page__form-link-text">Login</a>
+			</p>
+		</div>
+	</div>
+</section>
