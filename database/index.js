@@ -21,16 +21,13 @@ if (process.env.NODE_ENV == 'development') {
 		async query(text, params) {
 			try {
 				const res = await pool.query(text, params)
-				console.log('executed query', { text })
 				return res
 			} catch (error) {
-				console.error('error in query', { text })
 				throw error
 			}
 		}
 	}
 } else {
-	console.log('Production DATABASE_URL:', process.env.DATABASE_URL ? 'Set' : 'Missing')
 	pool = new Pool({
 		connectionString: process.env.DATABASE_URL,
 		ssl: {
