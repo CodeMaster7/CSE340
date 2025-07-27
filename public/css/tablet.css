@@ -246,6 +246,21 @@ main::after {
 }
 
 /* ================================================================
+   EXPRESS MESSAGES STYLES - TABLET STYLES
+   ================================================================ */
+.notice {
+    font-size: var(--font-size-sm);
+    margin: 0 auto var(--spacing-lg);
+}
+
+.error {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-md) var(--spacing-lg);
+    max-width: 450px;
+    margin: 0 auto var(--spacing-lg);
+}
+
+/* ================================================================
    REGISTER PAGE STYLES - TABLET STYLES
    ================================================================ */
 .register-page__container {
