@@ -280,6 +280,20 @@ main::after {
 }
 
 /* ================================================================
+   EXPRESS MESSAGES STYLES - DESKTOP STYLES
+   ================================================================ */
+.notice {
+    font-size: var(--font-size-md);
+}
+
+.error {
+    font-size: var(--font-size-md);
+    padding: var(--spacing-lg);
+    max-width: 500px;
+    margin: 0 auto var(--spacing-lg);
+}
+
+/* ================================================================
    REGISTER PAGE STYLES - DESKTOP STYLES
    ================================================================ */
 .register-page__container {
