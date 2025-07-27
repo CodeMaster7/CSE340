@@ -280,6 +280,73 @@ main::after {
 }
 
 /* ================================================================
+   REGISTER PAGE STYLES - DESKTOP STYLES
+   ================================================================ */
+.register-page__container {
+    max-width: 600px;
+    padding: 0 var(--spacing-xxl);
+}
+
+.register-page__title {
+    font-size: var(--font-size-hero);
+}
+
+.register-page__form {
+    padding: var(--spacing-xxxl);
+}
+
+.register-page__form-group {
+    margin-bottom: var(--spacing-xl);
+}
+
+.register-page__form-label {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.register-page__form-input {
+    padding: var(--spacing-sm);
+    font-size: var(--font-size-md);
+}
+
+.register-page__password-requirements {
+    margin-top: var(--spacing-md);
+}
+
+.register-page__requirements-title {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.register-page__requirement {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.register-page__show-password {
+    margin-top: var(--spacing-sm);
+}
+
+.register-page__show-password-label {
+    font-size: var(--font-size-sm);
+}
+
+/* Center the button with enhanced styling */
+.register-page__form-button {
+    font-size: var(--font-size-md);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    display: block;
+    margin: 0 auto var(--spacing-xl);
+    max-width: 300px;
+}
+
+/* Center the login link */
+.register-page__form-link {
+    font-size: var(--font-size-lg);
+    text-align: center;
+}
+
+/* ================================================================
    LOGIN PAGE STYLES - DESKTOP STYLES
    ================================================================ */
 .login-page__container {
