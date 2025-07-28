@@ -352,6 +352,22 @@ main::after {
     text-align: center;
 }
 
+.login-page__password-requirements {
+    padding: var(--spacing-md);
+}
+
+.login-page__requirements-title {
+    font-size: var(--font-size-sm);
+}
+
+.login-page__requirement {
+    font-size: var(--font-size-sm);
+}
+
+.login-page__show-password-label {
+    font-size: var(--font-size-sm);
+}
+
 /* ================================================================
    ERROR PAGE STYLES - TABLET STYLES
    ================================================================ */
