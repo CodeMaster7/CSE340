@@ -599,8 +599,6 @@ main {
 .error {
   background-color: transparent;
   color: #991b1b;
-  border: 2px solid #ef4444;
-  padding: var(--spacing-md);
   border-radius: var(--border-radius-sm);
   margin-bottom: var(--spacing-lg);
   list-style: none;
@@ -893,6 +891,14 @@ main {
   box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.15);
 }
 
+.login-page__form-input:invalid {
+  border-color: var(--danger-color);
+}
+
+.login-page__form-input:valid {
+  border-color: var(--success-color);
+}
+
 .login-page__form-input::placeholder {
   color: #999;
   font-style: italic;
@@ -934,6 +940,78 @@ main {
 .login-page__form-link-text:hover {
   color: var(--primary-hover);
   text-decoration: underline;
+}
+
+.login-page__password-container {
+  width: 100%;
+}
+
+.login-page__show-password {
+  margin-top: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.login-page__show-password-checkbox {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  accent-color: var(--primary-color);
+}
+
+.login-page__show-password-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+  margin: 0;
+  font-weight: normal;
+}
+
+.login-page__show-password-label:hover {
+  color: var(--primary-color);
+}
+
+.login-page__password-requirements {
+  margin-top: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  background-color: var(--light-color);
+  border-radius: var(--border-radius-sm);
+  border: 1px solid #e0e0e0;
+}
+
+.login-page__requirements-title {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.login-page__requirements-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.login-page__requirement {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xs);
+  position: relative;
+  padding-left: var(--spacing-sm);
+}
+
+.login-page__requirement:before {
+  content: "•";
+  color: var(--primary-color);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.login-page__requirement:last-child {
+  margin-bottom: 0;
 }
 
 /* ================================================================
