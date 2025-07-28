@@ -30,7 +30,6 @@ Util.getNav = async function (req, res, next) {
 Util.buildClassificationGrid = async function (data) {
 	let grid
 	if (data.length > 0) {
-		// Using BEM naming convention for classification grid
 		grid = '<ul class="classification-grid">'
 		data.forEach((vehicle) => {
 			grid += '<li class="classification-grid__item">'
