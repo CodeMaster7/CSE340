@@ -405,6 +405,29 @@ main::after {
     text-align: center;
 }
 
+.login-page__password-requirements {
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+}
+
+.login-page__requirements-title {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.login-page__requirement {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.login-page__show-password {
+    margin-top: var(--spacing-sm);
+}
+
+.login-page__show-password-label {
+    font-size: var(--font-size-sm);
+}
+
 /* ================================================================
    ERROR PAGE STYLES - DESKTOP STYLES
    ================================================================ */
