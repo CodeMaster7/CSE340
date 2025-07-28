@@ -11,6 +11,15 @@
 		<!-- Error messages -->
 		<div class="login-page__messages"><%- messages() %></div>
 
+		<!-- Validation errors -->
+		<% if (errors) { %>
+		<ul class="error">
+			<% errors.array().forEach(error => { %>
+			<li><%= error.msg %></li>
+			<% }) %>
+		</ul>
+		<% } %>
+
 		<!-- Login form -->
 		<div class="login-page__form">
 			<form action="/account/login" method="post">
@@ -22,6 +31,7 @@
 						name="account_email"
 						class="login-page__form-input"
 						autocomplete="email"
+						value="<%= locals.account_email %>"
 						required
 					/>
 				</div>
