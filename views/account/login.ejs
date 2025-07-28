@@ -16,18 +16,43 @@
 			<form action="/account/login" method="post">
 				<div class="login-page__form-group">
 					<label for="email" class="login-page__form-label">Email</label>
-					<input type="text" id="email" name="account_email" class="login-page__form-input" required />
+					<input
+						type="email"
+						id="email"
+						name="account_email"
+						class="login-page__form-input"
+						autocomplete="email"
+						required
+					/>
 				</div>
 				<div class="login-page__form-group">
 					<label for="password" class="login-page__form-label">Password</label>
-					<input
-						type="password"
-						id="password"
-						name="account_password"
-						class="login-page__form-input"
-						autocomplete="current-password"
-						required
-					/>
+					<div class="login-page__password-container">
+						<input
+							type="password"
+							id="password"
+							name="account_password"
+							class="login-page__form-input"
+							autocomplete="current-password"
+							minlength="12"
+							pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$"
+							title="Password must be at least 12 characters long and contain at least one uppercase letter, one number, and one special character"
+							required
+						/>
+						<div class="login-page__show-password">
+							<input type="checkbox" id="showPassword" class="login-page__show-password-checkbox" />
+							<label for="showPassword" class="login-page__show-password-label">Show Password</label>
+						</div>
+					</div>
+					<div class="login-page__password-requirements">
+						<p class="login-page__requirements-title">Password Requirements:</p>
+						<ul class="login-page__requirements-list">
+							<li class="login-page__requirement">12 characters minimum</li>
+							<li class="login-page__requirement">At least 1 capital letter</li>
+							<li class="login-page__requirement">At least 1 number</li>
+							<li class="login-page__requirement">At least 1 special character (@$!%*?&)</li>
+						</ul>
+					</div>
 				</div>
 				<button type="submit" class="login-page__form-button">Login</button>
 			</form>
