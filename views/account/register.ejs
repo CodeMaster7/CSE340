@@ -11,6 +11,15 @@
 		<!-- Error messages -->
 		<div class="register-page__messages"><%- messages() %></div>
 
+		<!-- Validation errors -->
+		<% if (errors) { %>
+		<ul class="error">
+			<% errors.array().forEach(error => { %>
+			<li><%= error.msg %></li>
+			<% }) %>
+		</ul>
+		<% } %>
+
 		<!-- Register form -->
 		<div class="register-page__form">
 			<form action="/account/register" method="post">
