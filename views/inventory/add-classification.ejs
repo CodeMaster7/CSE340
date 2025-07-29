@@ -1,0 +1,63 @@
+<!-- Add Classification view with BEM structure -->
+<section class="add-classification">
+	<div class="add-classification__container">
+		<!-- Classification header -->
+		<% if (title) { %>
+		<header class="add-classification__header">
+			<h1 class="add-classification__title"><%= title %></h1>
+		</header>
+		<% } else { res.redirect('/') } %>
+
+		<!-- Flash messages (success, error notifications) -->
+		<div class="add-classification__messages"><%- messages() %></div>
+
+		<!-- Validation errors from server-side -->
+		<% if (errors) { %>
+		<ul class="add-classification__errors">
+			<% errors.array().forEach(error => { %>
+			<li class="add-classification__error"><%= error.msg %></li>
+			<% }) %>
+		</ul>
+		<% } %>
+
+		<!-- Add Classification Form -->
+		<div class="add-classification__content">
+			<form action="/inv/add-classification" method="post" class="add-classification__form" novalidate>
+				<!-- Form instructions -->
+				<div class="add-classification__instructions">
+					<p class="add-classification__instruction-text">
+						<strong>Important:</strong>
+						The classification name cannot contain spaces or special characters. Only letters and numbers
+						are allowed.
+					</p>
+				</div>
+
+				<!-- Classification Name Input -->
+				<div class="add-classification__form-group">
+					<label for="classification_name" class="add-classification__form-label">
+						Classification Name *
+					</label>
+					<input
+						type="text"
+						id="classification_name"
+						name="classification_name"
+						class="add-classification__form-input"
+						value="<%= locals.classification_name || '' %>"
+						pattern="^[A-Za-z0-9]+$"
+						title="Classification name can only contain letters and numbers, no spaces or special characters"
+						maxlength="30"
+						required
+					/>
+				</div>
+
+				<!-- Submit Button -->
+				<button type="submit" class="add-classification__form-button">Add Classification</button>
+			</form>
+
+			<!-- Back to Management Link -->
+			<div class="add-classification__navigation">
+				<a href="/inv/" class="add-classification__back-link">← Back to Vehicle Management</a>
+			</div>
+		</div>
+	</div>
+</section>
