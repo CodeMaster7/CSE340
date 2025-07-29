@@ -456,3 +456,169 @@ main::after {
     padding: var(--spacing-lg) var(--spacing-xl);
     font-size: var(--font-size-lg);
 }
+
+/* ================================================================
+   INVENTORY MANAGEMENT STYLES - DESKTOP STYLES
+   ================================================================ */
+.inventory-management__container {
+    padding: 0 var(--spacing-xxl);
+}
+
+.inventory-management__title {
+    font-size: var(--font-size-hero);
+}
+
+.inventory-management__nav {
+    padding: var(--spacing-xxxl);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.inventory-management__nav-title {
+    font-size: var(--font-size-xxl);
+    margin-bottom: var(--spacing-xxl);
+}
+
+.inventory-management__nav-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+}
+
+.inventory-management__nav-item {
+    min-height: 150px;
+}
+
+.inventory-management__nav-link {
+    padding: var(--spacing-xxl);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.inventory-management__nav-icon {
+    font-size: var(--font-size-hero);
+}
+
+.inventory-management__nav-text {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-sm);
+}
+
+.inventory-management__nav-description {
+    font-size: var(--font-size-md);
+    max-width: 200px;
+}
+
+/* ================================================================
+   ADD CLASSIFICATION STYLES - DESKTOP STYLES
+   ================================================================ */
+.add-classification__container {
+    padding: 0 var(--spacing-xxl);
+}
+
+.add-classification__title {
+    font-size: var(--font-size-hero);
+}
+
+.add-classification__form {
+    padding: var(--spacing-xxxl);
+    max-width: 600px;
+    margin: 0 auto var(--spacing-lg);
+}
+
+.add-classification__instructions {
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xxl);
+}
+
+.add-classification__instruction-text {
+    font-size: var(--font-size-lg);
+}
+
+.add-classification__form-group {
+    margin-bottom: var(--spacing-xxl);
+}
+
+.add-classification__form-label {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.add-classification__form-input {
+    padding: var(--spacing-md);
+    font-size: var(--font-size-lg);
+}
+
+.add-classification__form-button {
+    font-size: var(--font-size-lg);
+    padding: var(--spacing-md) var(--spacing-xl);
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.add-classification__back-link {
+    font-size: var(--font-size-lg);
+}
+
+/* ================================================================
+   ADD INVENTORY STYLES - DESKTOP STYLES
+   ================================================================ */
+.add-inventory__container {
+    padding: 0 var(--spacing-xxl);
+}
+
+.add-inventory__title {
+    font-size: var(--font-size-hero);
+}
+
+.add-inventory__form {
+    padding: var(--spacing-xxxl);
+    max-width: 900px;
+    margin: 0 auto var(--spacing-lg);
+}
+
+.add-inventory__instructions {
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xxl);
+}
+
+.add-inventory__instruction-text {
+    font-size: var(--font-size-lg);
+}
+
+.add-inventory__form-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xxl);
+}
+
+.add-inventory__form-label {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.add-inventory__form-input,
+.add-inventory__form-textarea {
+    padding: var(--spacing-md);
+    font-size: var(--font-size-lg);
+}
+
+.add-inventory__form-textarea {
+    min-height: 120px;
+}
+
+.add-inventory__form-button {
+    font-size: var(--font-size-lg);
+    padding: var(--spacing-md) var(--spacing-xl);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.add-inventory__back-link {
+    font-size: var(--font-size-lg);
+}
