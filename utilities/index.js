@@ -24,6 +24,25 @@ Util.getNav = async function (req, res, next) {
 	return list
 }
 
+/* ************************
+ * Constructs the classification select list for inventory forms
+ ************************** */
+Util.buildClassificationList = async function (classification_id = null) {
+	let data = await invModel.getClassifications()
+	let classificationList =
+		'<select name="classification_id" id="classificationList" class="add-inventory__form-input" required>'
+	classificationList += "<option value=''>Choose a Classification</option>"
+	data.rows.forEach((row) => {
+		classificationList += '<option value="' + row.classification_id + '"'
+		if (classification_id != null && row.classification_id == classification_id) {
+			classificationList += ' selected '
+		}
+		classificationList += '>' + row.classification_name + '</option>'
+	})
+	classificationList += '</select>'
+	return classificationList
+}
+
 /* **************************************
  * Build the classification view HTML
  * ************************************ */
@@ -151,6 +170,6 @@ Util.buildVehicleDetailHTML = async function (vehicle) {
  * Wrap other function in this for
  * General Error Handling
  **************************************** */
-Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
+Util.handleErrors = (fn) => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
 
 module.exports = Util
