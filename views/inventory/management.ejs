@@ -1,0 +1,45 @@
+<!-- Inventory Management view with BEM structure -->
+<section class="inventory-management">
+	<div class="inventory-management__container">
+		<!-- Management header -->
+		<% if (title) { %>
+		<header class="inventory-management__header">
+			<h1 class="inventory-management__title"><%= title %></h1>
+		</header>
+		<% } else { res.redirect('/') } %>
+
+		<!-- Flash messages (success, error notifications) -->
+		<div class="inventory-management__messages"><%- messages() %></div>
+
+		<!-- Management navigation links -->
+		<div class="inventory-management__content">
+			<nav class="inventory-management__nav">
+				<h2 class="inventory-management__nav-title">Inventory Management Tasks</h2>
+				<ul class="inventory-management__nav-list">
+					<!-- Link to add new classification -->
+					<li class="inventory-management__nav-item">
+						<a href="/inv/add-classification" class="inventory-management__nav-link">
+							<span class="inventory-management__nav-icon">📁</span>
+							<div>
+								<div class="inventory-management__nav-text">Add New Classification</div>
+								<p class="inventory-management__nav-description">
+									Create a new vehicle classification category
+								</p>
+							</div>
+						</a>
+					</li>
+					<!-- Link to add new inventory item -->
+					<li class="inventory-management__nav-item">
+						<a href="/inv/add-inventory" class="inventory-management__nav-link">
+							<span class="inventory-management__nav-icon">🚗</span>
+							<div>
+								<div class="inventory-management__nav-text">Add New Vehicle</div>
+								<p class="inventory-management__nav-description">Add a new vehicle to the inventory</p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</section>
