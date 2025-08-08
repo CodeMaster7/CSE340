@@ -11,6 +11,9 @@ router.get('/login', utilities.handleErrors(accountController.buildLogin))
 // Route to build register view
 router.get('/register', utilities.handleErrors(accountController.buildRegister))
 
+// Route to build account management view (default route)
+router.get('/', utilities.checkLogin, utilities.handleErrors(accountController.buildAccountManagement))
+
 // Route to process register form
 router.post(
 	'/register',
@@ -24,7 +27,7 @@ router.post(
 	'/login',
 	regValidate.loginRules(),
 	regValidate.checkLoginData,
-	utilities.handleErrors(accountController.loginAccount)
+	utilities.handleErrors(accountController.accountLogin)
 )
 
 module.exports = router
