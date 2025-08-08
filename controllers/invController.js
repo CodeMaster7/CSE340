@@ -8,9 +8,11 @@ const invCont = {}
  * ************************** */
 invCont.buildManagement = async function (req, res, next) {
 	let nav = await utilities.getNav()
+	const classificationSelect = await utilities.buildClassificationList()
 	res.render('./inventory/management', {
 		title: 'Vehicle Management',
 		nav,
+		classificationSelect,
 		errors: null
 	})
 }
@@ -24,6 +26,52 @@ invCont.buildAddClassification = async function (req, res, next) {
 		title: 'Add New Classification',
 		nav,
 		errors: null
+	})
+}
+
+/* ***************************
+ *  Build add inventory view
+ * ************************** */
+invCont.buildAddInventory = async function (req, res, next) {
+	let nav = await utilities.getNav()
+	let classificationList = await utilities.buildClassificationList()
+	res.render('./inventory/add-inventory', {
+		title: 'Add New Vehicle',
+		nav,
+		classificationList,
+		errors: null
+	})
+}
+
+/* ***************************
+ *  Build inventory by classification view
+ * ************************** */
+invCont.buildByClassificationId = async function (req, res, next) {
+	const classification_id = req.params.classificationId
+	const data = await invModel.getInventoryByClassificationId(classification_id)
+	const grid = await utilities.buildClassificationGrid(data)
+	let nav = await utilities.getNav()
+	const className = data[0].classification_name
+	res.render('./inventory/classification', {
+		title: className + ' vehicles',
+		nav,
+		grid
+	})
+}
+
+/* ***************************
+ *  Build inventory detail view
+ * ************************** */
+invCont.buildByInventoryId = async function (req, res, next) {
+	const inv_id = req.params.invId
+	const data = await invModel.getInventoryById(inv_id)
+	const vehicleHTML = await utilities.buildVehicleDetailHTML(data)
+	let nav = await utilities.getNav()
+	const vehicleTitle = `${data.inv_make} ${data.inv_model}`
+	res.render('./inventory/detail', {
+		title: vehicleTitle,
+		nav,
+		vehicleHTML
 	})
 }
 
@@ -54,20 +102,6 @@ invCont.addClassification = async function (req, res, next) {
 			errors: null
 		})
 	}
-}
-
-/* ***************************
- *  Build add inventory view
- * ************************** */
-invCont.buildAddInventory = async function (req, res, next) {
-	let nav = await utilities.getNav()
-	let classificationList = await utilities.buildClassificationList()
-	res.render('./inventory/add-inventory', {
-		title: 'Add New Vehicle',
-		nav,
-		classificationList,
-		errors: null
-	})
 }
 
 /* ***************************
@@ -133,35 +167,16 @@ invCont.addInventory = async function (req, res, next) {
 }
 
 /* ***************************
- *  Build inventory by classification view
+ *  Return Inventory by Classification As JSON
  * ************************** */
-invCont.buildByClassificationId = async function (req, res, next) {
-	const classification_id = req.params.classificationId
-	const data = await invModel.getInventoryByClassificationId(classification_id)
-	const grid = await utilities.buildClassificationGrid(data)
-	let nav = await utilities.getNav()
-	const className = data[0].classification_name
-	res.render('./inventory/classification', {
-		title: className + ' vehicles',
-		nav,
-		grid
-	})
-}
-
-/* ***************************
- *  Build inventory detail view
- * ************************** */
-invCont.buildByInventoryId = async function (req, res, next) {
-	const inv_id = req.params.invId
-	const data = await invModel.getInventoryById(inv_id)
-	const vehicleHTML = await utilities.buildVehicleDetailHTML(data)
-	let nav = await utilities.getNav()
-	const vehicleTitle = `${data.inv_make} ${data.inv_model}`
-	res.render('./inventory/detail', {
-		title: vehicleTitle,
-		nav,
-		vehicleHTML
-	})
+invCont.getInventoryJSON = async (req, res, next) => {
+	const classification_id = parseInt(req.params.classification_id)
+	const invData = await invModel.getInventoryByClassificationId(classification_id)
+	if (invData[0].inv_id) {
+		return res.json(invData)
+	} else {
+		next(new Error('No data returned'))
+	}
 }
 
 module.exports = invCont
