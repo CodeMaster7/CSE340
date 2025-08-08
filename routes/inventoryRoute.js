@@ -8,6 +8,9 @@ const invValidate = require('../utilities/inventory-validation')
 // Route to build inventory management view
 router.get('/', utilities.handleErrors(invController.buildManagement))
 
+// Route to get inventory by classification ID
+router.get('/getInventory/:classification_id', utilities.handleErrors(invController.getInventoryJSON))
+
 // Route to build add classification view
 router.get('/add-classification', utilities.handleErrors(invController.buildAddClassification))
 
