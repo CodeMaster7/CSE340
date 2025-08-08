@@ -1,0 +1,28 @@
+<!-- Account Management view with BEM structure -->
+<section class="account-management">
+	<div class="account-management__container">
+		<!-- Page header -->
+		<% if (title) { %>
+		<header class="account-management__header">
+			<h1 class="account-management__title"><%= title %></h1>
+		</header>
+		<% } else { res.redirect('/') } %>
+
+		<!-- Flash messages -->
+		<div class="account-management__messages"><%- messages() %></div>
+
+		<!-- Validation errors -->
+		<% if (errors) { %>
+		<ul class="error">
+			<% errors.array().forEach(error => { %>
+			<li><%= error.msg %></li>
+			<% }) %>
+		</ul>
+		<% } %>
+
+		<!-- Main content -->
+		<div class="account-management__content">
+			<p class="account-management__welcome">You're logged in</p>
+		</div>
+	</div>
+</section>
