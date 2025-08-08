@@ -10,6 +10,7 @@ const express = require('express')
 const expressLayouts = require('express-ejs-layouts')
 const session = require('express-session')
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 const env = require('dotenv').config()
 // Require files from routes, controllers, and utilities
 const static = require('./routes/static')
@@ -37,14 +38,16 @@ app.use(
 		name: 'sessionId'
 	})
 )
-
 // Express Messages Middleware
 app.use(require('connect-flash')())
 app.use(function (req, res, next) {
 	res.locals.messages = require('express-messages')(req, res)
 	next()
 })
-
+// Cookie Parser Middleware
+app.use(cookieParser())
+// JWT Token Middleware
+app.use(utilities.checkJWTToken)
 // Express body parser middleware
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
