@@ -1,0 +1,199 @@
+<!-- Edit Inventory view with BEM structure -->
+<section class="add-inventory">
+	<div class="add-inventory__container">
+		<!-- Inventory header -->
+		<% if (title) { %>
+		<header class="add-inventory__header">
+			<h1 class="add-inventory__title"><%= title %></h1>
+		</header>
+		<% } else { res.redirect('/') } %>
+
+		<!-- Flash messages (success, error notifications) -->
+		<div class="add-inventory__messages"><%- messages() %></div>
+
+		<!-- Validation errors from server-side -->
+		<% if (errors) { %>
+		<ul class="add-inventory__errors">
+			<% errors.array().forEach(error => { %>
+			<li class="add-inventory__error"><%= error.msg %></li>
+			<% }) %>
+		</ul>
+		<% } %>
+
+		<!-- Edit Inventory Form -->
+		<div class="add-inventory__content">
+			<form action="/inv/update" method="post" id="updateForm" class="add-inventory__form" novalidate>
+				<!-- Form instructions -->
+				<div class="add-inventory__instructions">
+					<p class="add-inventory__instruction-text">
+						<strong>Note:</strong>
+						All fields are required. Use the default image paths if you don't have specific vehicle images.
+					</p>
+				</div>
+
+				<!-- Form Grid Layout -->
+				<div class="add-inventory__form-grid">
+					<!-- Vehicle Classification -->
+					<div class="add-inventory__form-group add-inventory__form-group--full">
+						<label for="classification_id" class="add-inventory__form-label">
+							Vehicle Classification *
+						</label>
+						<%- classificationSelect %>
+					</div>
+
+					<!-- Vehicle Make -->
+					<div class="add-inventory__form-group">
+						<label for="inv_make" class="add-inventory__form-label">Make *</label>
+						<input
+							type="text"
+							id="inv_make"
+							name="inv_make"
+							class="add-inventory__form-input"
+							value="<%= locals.inv_make || '' %>"
+							placeholder="e.g., Toyota, Ford, Honda"
+							maxlength="50"
+							required
+						/>
+					</div>
+
+					<!-- Vehicle Model -->
+					<div class="add-inventory__form-group">
+						<label for="inv_model" class="add-inventory__form-label">Model *</label>
+						<input
+							type="text"
+							id="inv_model"
+							name="inv_model"
+							class="add-inventory__form-input"
+							value="<%= locals.inv_model || '' %>"
+							placeholder="e.g., Camry, F-150, Civic"
+							maxlength="50"
+							required
+						/>
+					</div>
+
+					<!-- Vehicle Year -->
+					<div class="add-inventory__form-group">
+						<label for="inv_year" class="add-inventory__form-label">Year *</label>
+						<input
+							type="text"
+							id="inv_year"
+							name="inv_year"
+							class="add-inventory__form-input"
+							value="<%= locals.inv_year || '' %>"
+							placeholder="e.g., 2023"
+							pattern="[0-9]{4}"
+							maxlength="4"
+							required
+						/>
+					</div>
+
+					<!-- Vehicle Price -->
+					<div class="add-inventory__form-group">
+						<label for="inv_price" class="add-inventory__form-label">Price *</label>
+						<input
+							type="number"
+							id="inv_price"
+							name="inv_price"
+							class="add-inventory__form-input"
+							value="<%= locals.inv_price || '' %>"
+							placeholder="e.g., 25000"
+							min="0"
+							step="0.01"
+							required
+						/>
+					</div>
+
+					<!-- Vehicle Mileage -->
+					<div class="add-inventory__form-group">
+						<label for="inv_miles" class="add-inventory__form-label">Mileage *</label>
+						<input
+							type="number"
+							id="inv_miles"
+							name="inv_miles"
+							class="add-inventory__form-input"
+							value="<%= locals.inv_miles || '' %>"
+							placeholder="e.g., 15000"
+							min="0"
+							required
+						/>
+					</div>
+
+					<!-- Vehicle Color -->
+					<div class="add-inventory__form-group">
+						<label for="inv_color" class="add-inventory__form-label">Color *</label>
+						<input
+							type="text"
+							id="inv_color"
+							name="inv_color"
+							class="add-inventory__form-input"
+							value="<%= locals.inv_color || '' %>"
+							placeholder="e.g., Red, Blue, Silver"
+							maxlength="30"
+							required
+						/>
+					</div>
+
+					<!-- Vehicle Description -->
+					<div class="add-inventory__form-group add-inventory__form-group--full">
+						<label for="inv_description" class="add-inventory__form-label">Description *</label>
+						<textarea
+							id="inv_description"
+							name="inv_description"
+							class="add-inventory__form-textarea"
+							rows="4"
+							placeholder="Describe the vehicle's features, condition, and selling points..."
+							maxlength="1000"
+							required
+						>
+                        <%= locals.inv_description || '' %>
+                        </textarea
+						>
+					</div>
+
+					<!-- Vehicle Image Path -->
+					<div class="add-inventory__form-group">
+						<label for="inv_image" class="add-inventory__form-label">Image Path *</label>
+						<input
+							type="text"
+							id="inv_image"
+							name="inv_image"
+							class="add-inventory__form-input"
+							value="<%= locals.inv_image || '/images/vehicles/no-image.png' %>"
+							placeholder="/images/vehicles/no-image.png"
+							required
+						/>
+					</div>
+
+					<!-- Vehicle Thumbnail Path -->
+					<div class="add-inventory__form-group">
+						<label for="inv_thumbnail" class="add-inventory__form-label">Thumbnail Path *</label>
+						<input
+							type="text"
+							id="inv_thumbnail"
+							name="inv_thumbnail"
+							class="add-inventory__form-input"
+							value="<%= locals.inv_thumbnail || '/images/vehicles/no-image-tn.png' %>"
+							placeholder="/images/vehicles/no-image-tn.png"
+							required
+						/>
+					</div>
+				</div>
+
+				<!-- Submit Button -->
+				<button type="submit" class="add-inventory__form-button" disabled>Update Vehicle Information</button>
+				<input
+					type="hidden"
+					name="inv_id"
+					<% if (locals.inv_id) { %> value="<%= locals.inv_id %>" <% } %>
+				/>
+			</form>
+
+			<!-- Back to Management Link -->
+			<div class="add-inventory__navigation">
+				<a href="/inv/" class="add-inventory__back-link">← Back to Vehicle Management</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script src="../../js/inv-update.js"></script>
