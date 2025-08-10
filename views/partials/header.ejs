@@ -8,7 +8,16 @@
 
 		<!-- Account tools -->
 		<div class="header__tools">
+			<% if (locals.loggedin) { %>
+			<!-- Logged in user tools -->
+			<a href="/account/" class="header__welcome-link" title="Go to account management">
+				Welcome <%= locals.accountData.account_firstname %>
+			</a>
+			<a href="/account/logout" class="header__logout-link" title="Click to logout">Logout</a>
+			<% } else { %>
+			<!-- Not logged in tools -->
 			<a href="/account/login" class="header__account-link" title="Click to login">My Account</a>
+			<% } %>
 		</div>
 	</div>
 </header>
