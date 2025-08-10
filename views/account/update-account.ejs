@@ -1,0 +1,95 @@
+<!-- Update Account view with BEM structure -->
+<section class="update-account">
+	<div class="update-account__container">
+		<!-- Page header -->
+		<% if (title) { %>
+		<header class="update-account__header">
+			<h1 class="update-account__title"><%= title %></h1>
+		</header>
+		<% } else { res.redirect('/') } %>
+
+		<!-- Flash messages -->
+		<div class="update-account__messages"><%- messages() %></div>
+
+		<!-- Validation errors -->
+		<% if (errors) { %>
+		<ul class="error">
+			<% errors.array().forEach(error => { %>
+			<li><%= error.msg %></li>
+			<% }) %>
+		</ul>
+		<% } %>
+
+		<!-- Update Account Form -->
+		<div class="update-account__content">
+			<form action="/account/update" method="post" class="update-account__form" novalidate>
+				<!-- Form instructions -->
+				<div class="update-account__instructions">
+					<p class="update-account__instruction-text">
+						<strong>Note:</strong>
+						Update your account information below. All fields are required.
+					</p>
+				</div>
+
+				<!-- Form Grid Layout -->
+				<div class="update-account__form-grid">
+					<!-- First Name -->
+					<div class="update-account__form-group">
+						<label for="account_firstname" class="update-account__form-label">First Name *</label>
+						<input
+							type="text"
+							id="account_firstname"
+							name="account_firstname"
+							class="update-account__form-input"
+							value="<%= locals.account_firstname || '' %>"
+							placeholder="Enter your first name"
+							maxlength="50"
+							required
+						/>
+					</div>
+
+					<!-- Last Name -->
+					<div class="update-account__form-group">
+						<label for="account_lastname" class="update-account__form-label">Last Name *</label>
+						<input
+							type="text"
+							id="account_lastname"
+							name="account_lastname"
+							class="update-account__form-input"
+							value="<%= locals.account_lastname || '' %>"
+							placeholder="Enter your last name"
+							maxlength="50"
+							required
+						/>
+					</div>
+
+					<!-- Email -->
+					<div class="update-account__form-group update-account__form-group--full">
+						<label for="account_email" class="update-account__form-label">Email Address *</label>
+						<input
+							type="email"
+							id="account_email"
+							name="account_email"
+							class="update-account__form-input"
+							value="<%= locals.account_email || '' %>"
+							placeholder="Enter your email address"
+							autocomplete="email"
+							required
+						/>
+					</div>
+				</div>
+
+				<!-- Hidden field for account ID -->
+				<input type="hidden" name="account_id" value="<%= locals.account_id %>" />
+
+				<!-- Submit Button -->
+				<button type="submit" class="update-account__form-button">Update Account</button>
+			</form>
+
+			<!-- Back to Management Link -->
+			<div class="update-account__navigation">
+				<a href="/account/" class="update-account__back-link">← Back to Account Management</a>
+			</div>
+		</div>
+	</div>
+</section>
