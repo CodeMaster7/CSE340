@@ -140,4 +140,43 @@ async function logout(req, res, next) {
 	res.redirect('/')
 }
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccountManagement, logout }
+/* ****************************************
+ *  Build update account view
+ * *************************************** */
+async function buildUpdateAccount(req, res, next) {
+	const account_id = parseInt(req.params.accountId)
+	let nav = await utilities.getNav()
+
+	// Verify the user can only update their own account
+	if (account_id !== res.locals.accountData.account_id) {
+		req.flash('error', 'You can only update your own account information.')
+		return res.redirect('/account/')
+	}
+
+	// Get account data from model
+	const accountData = await accountModel.getAccountById(account_id)
+	if (!accountData) {
+		req.flash('error', 'Account not found.')
+		return res.redirect('/account/')
+	}
+
+	res.render('account/update-account', {
+		title: 'Update Account Information',
+		nav,
+		errors: null,
+		account_id: accountData.account_id,
+		account_firstname: accountData.account_firstname,
+		account_lastname: accountData.account_lastname,
+		account_email: accountData.account_email
+	})
+}
+
+module.exports = {
+	buildLogin,
+	buildRegister,
+	registerAccount,
+	accountLogin,
+	buildAccountManagement,
+	logout,
+	buildUpdateAccount
+}
