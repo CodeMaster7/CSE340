@@ -1,0 +1,105 @@
+<!-- Delete Inventory view with BEM structure -->
+<section class="add-inventory">
+	<div class="add-inventory__container">
+		<!-- Inventory header -->
+		<% if (title) { %>
+		<header class="add-inventory__header">
+			<h1 class="add-inventory__title"><%= title %></h1>
+		</header>
+		<% } else { res.redirect('/') } %>
+
+		<!-- Flash messages (success, error notifications) -->
+		<div class="add-inventory__messages"><%- messages() %></div>
+
+		<!-- Validation errors from server-side -->
+		<% if (errors) { %>
+		<ul class="add-inventory__errors">
+			<% errors.array().forEach(error => { %>
+			<li class="add-inventory__error"><%= error.msg %></li>
+			<% }) %>
+		</ul>
+		<% } %>
+
+		<!-- Delete Inventory Form -->
+		<div class="add-inventory__content">
+			<form action="/inv/delete" method="post" id="deleteForm" class="add-inventory__form" novalidate>
+				<!-- Form instructions -->
+				<div class="add-inventory__instructions">
+					<p class="add-inventory__instruction-text">
+						<strong>Confirm Deletion - The delete is permanent.</strong>
+						Please verify this is the correct inventory item to be deleted because the delete cannot be
+						undone.
+					</p>
+				</div>
+
+				<!-- Form Grid Layout -->
+				<div class="add-inventory__form-grid">
+					<!-- Vehicle Make -->
+					<div class="add-inventory__form-group">
+						<label for="inv_make" class="add-inventory__form-label">Make</label>
+						<input
+							type="text"
+							id="inv_make"
+							name="inv_make"
+							class="add-inventory__form-input"
+							value="<%= locals.inv_make || '' %>"
+							readonly
+						/>
+					</div>
+
+					<!-- Vehicle Model -->
+					<div class="add-inventory__form-group">
+						<label for="inv_model" class="add-inventory__form-label">Model</label>
+						<input
+							type="text"
+							id="inv_model"
+							name="inv_model"
+							class="add-inventory__form-input"
+							value="<%= locals.inv_model || '' %>"
+							readonly
+						/>
+					</div>
+
+					<!-- Vehicle Year -->
+					<div class="add-inventory__form-group">
+						<label for="inv_year" class="add-inventory__form-label">Year</label>
+						<input
+							type="text"
+							id="inv_year"
+							name="inv_year"
+							class="add-inventory__form-input"
+							value="<%= locals.inv_year || '' %>"
+							readonly
+						/>
+					</div>
+
+					<!-- Vehicle Price -->
+					<div class="add-inventory__form-group">
+						<label for="inv_price" class="add-inventory__form-label">Price</label>
+						<input
+							type="text"
+							id="inv_price"
+							name="inv_price"
+							class="add-inventory__form-input"
+							value="$<%= locals.inv_price || '' %>"
+							readonly
+						/>
+					</div>
+				</div>
+
+				<!-- Submit Button -->
+				<button type="submit" class="add-inventory__form-button">Delete Vehicle</button>
+				<input
+					type="hidden"
+					name="inv_id"
+					<% if (locals.inv_id) { %> value="<%= locals.inv_id %>" <% } %>
+				/>
+			</form>
+
+			<!-- Back to Management Link -->
+			<div class="add-inventory__navigation">
+				<a href="/inv/" class="add-inventory__back-link">← Back to Vehicle Management</a>
+			</div>
+		</div>
+	</div>
+</section>
