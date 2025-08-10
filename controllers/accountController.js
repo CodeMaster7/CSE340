@@ -5,8 +5,8 @@ const utilities = require('../utilities/')
 require('dotenv').config()
 
 /* ****************************************
-*  Deliver login view
-* *************************************** */
+ *  Deliver login view
+ * *************************************** */
 async function buildLogin(req, res, next) {
 	let nav = await utilities.getNav()
 	res.render('account/login', {
@@ -17,8 +17,8 @@ async function buildLogin(req, res, next) {
 }
 
 /* ****************************************
-*  Deliver register view
-* *************************************** */
+ *  Deliver register view
+ * *************************************** */
 async function buildRegister(req, res, next) {
 	let nav = await utilities.getNav()
 	res.render('account/register', {
@@ -126,4 +126,18 @@ async function accountLogin(req, res) {
 	}
 }
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccountManagement }
+/* ****************************************
+ *  Process logout request
+ * *************************************** */
+async function logout(req, res, next) {
+	// Clear the JWT cookie to log out the user
+	res.clearCookie('jwt')
+	// Clear any session data
+	res.locals.loggedin = 0
+	delete res.locals.accountData
+	// Flash success message and redirect to home
+	req.flash('notice', 'You have been logged out successfully.')
+	res.redirect('/')
+}
+
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccountManagement, logout }
