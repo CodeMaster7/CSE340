@@ -39,4 +39,15 @@ router.get('/type/:classificationId', utilities.handleErrors(invController.build
 // Route to build inventory detail view by inventory ID
 router.get('/detail/:invId', utilities.handleErrors(invController.buildByInventoryId))
 
+// Route to edit inventory
+router.get('/edit/:invId', utilities.handleErrors(invController.buildEditInventory))
+
+// Route to process update inventory
+router.post(
+	'/update',
+	invValidate.inventoryRules(),
+	invValidate.checkUpdateData,
+	utilities.handleErrors(invController.updateInventory)
+)
+
 module.exports = router
