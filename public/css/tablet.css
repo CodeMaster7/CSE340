@@ -25,6 +25,44 @@ main::after {
     font-size: var(--font-size-sm);
 }
 
+/* Welcome and logout links - tablet styles */
+.header__welcome-link {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.header__logout-link {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+}
+
+/* ================================================================
+   ACCOUNT MANAGEMENT STYLES - TABLET
+   ================================================================ */
+.account-management__container {
+    padding: 0 var(--spacing-lg);
+}
+
+.account-management__title {
+    font-size: var(--font-size-xxl);
+}
+
+.account-management__greeting {
+    font-size: var(--font-size-xl);
+}
+
+.account-management__link {
+    font-size: var(--font-size-base);
+}
+
+.account-management__admin-link {
+    font-size: var(--font-size-base);
+}
+
+.account-management__admin-heading {
+    font-size: var(--font-size-lg);
+}
+
 /* ================================================================
    HERO SECTION - TABLET STYLES
    ================================================================ */
