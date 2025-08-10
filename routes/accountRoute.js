@@ -30,4 +30,7 @@ router.post(
 	utilities.handleErrors(accountController.accountLogin)
 )
 
+// Route to process logout
+router.get('/logout', utilities.handleErrors(accountController.logout))
+
 module.exports = router
