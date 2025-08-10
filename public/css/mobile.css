@@ -134,6 +134,7 @@ main {
   display: flex;
   align-items: center;
   align-self: flex-start;
+  gap: var(--spacing-sm);
 }
 
 .header__account-link {
@@ -150,6 +151,139 @@ main {
   background-color: var(--light-color);
   border-color: var(--primary-color);
   color: var(--primary-color);
+}
+
+/* Welcome link styling */
+.header__welcome-link {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--light-color);
+  border: 1px solid var(--primary-color);
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.header__welcome-link:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Logout link styling */
+.header__logout-link {
+  text-decoration: none;
+  color: var(--white);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: #dc3545;
+  border: 1px solid #dc3545;
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.header__logout-link:hover {
+  background-color: #c82333;
+  border-color: #c82333;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* ================================================================
+   ACCOUNT MANAGEMENT STYLES - MOBILE FIRST
+   ================================================================ */
+.account-management {
+  padding: var(--spacing-md) 0;
+}
+
+.account-management__container {
+  padding: 0 var(--spacing-md);
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+.account-management__header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.account-management__title {
+  color: var(--text-color);
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-sm);
+}
+
+.account-management__messages {
+  margin-bottom: var(--spacing-md);
+}
+
+.account-management__content {
+  padding: var(--spacing-lg) 0;
+}
+
+.account-management__greeting {
+  color: var(--text-color);
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-lg);
+  font-weight: 600;
+}
+
+/* Update account actions */
+.account-management__actions {
+  margin-bottom: var(--spacing-lg);
+}
+
+.account-management__action {
+  margin-bottom: var(--spacing-sm);
+}
+
+.account-management__link {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--primary-color);
+  padding: var(--spacing-sm) 0;
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  border-bottom: 1px solid transparent;
+  transition: border-bottom-color var(--transition-fast);
+}
+
+.account-management__link:hover {
+  border-bottom-color: var(--primary-color);
+}
+
+/* Admin section for Employee/Admin */
+.account-management__admin-section {
+  margin-top: var(--spacing-lg);
+}
+
+.account-management__admin-heading {
+  color: var(--text-color);
+  font-size: var(--font-size-md);
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+}
+
+.account-management__admin-action {
+  margin-bottom: 0;
+}
+
+.account-management__admin-link {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--primary-color);
+  padding: var(--spacing-sm) 0;
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  border-bottom: 1px solid transparent;
+  transition: border-bottom-color var(--transition-fast);
+}
+
+.account-management__admin-link:hover {
+  border-bottom-color: var(--primary-color);
 }
 
 /* ================================================================
