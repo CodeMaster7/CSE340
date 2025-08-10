@@ -36,6 +36,48 @@ main::after {
     font-size: var(--font-size-xxxl);
 }
 
+/* Welcome and logout links - desktop styles */
+.header__welcome-link {
+    font-size: var(--font-size-base);
+    padding: var(--spacing-sm) var(--spacing-lg);
+}
+
+.header__logout-link {
+    font-size: var(--font-size-base);
+    padding: var(--spacing-sm) var(--spacing-lg);
+}
+
+/* ================================================================
+   ACCOUNT MANAGEMENT STYLES - DESKTOP
+   ================================================================ */
+.account-management {
+    padding: var(--spacing-lg) 0;
+}
+
+.account-management__container {
+    padding: 0 var(--spacing-xxl);
+}
+
+.account-management__title {
+    font-size: var(--font-size-xxxl);
+}
+
+.account-management__greeting {
+    font-size: var(--font-size-xxl);
+}
+
+.account-management__link {
+    font-size: var(--font-size-lg);
+}
+
+.account-management__admin-heading {
+    font-size: var(--font-size-xl);
+}
+
+.account-management__admin-link {
+    font-size: var(--font-size-lg);
+}
+
 /* ================================================================
    HERO SECTION - DESKTOP STYLES
    ================================================================ */
