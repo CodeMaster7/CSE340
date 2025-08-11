@@ -171,6 +171,112 @@ async function buildUpdateAccount(req, res, next) {
 	})
 }
 
+/* ****************************************
+ *  Process Account Info Update
+ * *************************************** */
+async function updateAccountInfo(req, res, next) {
+	const { account_id, account_firstname, account_lastname, account_email } = req.body
+	let nav = await utilities.getNav()
+
+	try {
+		// Update account core fields
+		const updated = await accountModel.updateAccountInfo(
+			account_id,
+			account_firstname,
+			account_lastname,
+			account_email
+		)
+
+		if (updated) {
+			// Re-query current account data for display
+			const refreshed = await accountModel.getAccountById(account_id)
+			// Update JWT if the logged in user updated their own info
+			if (
+				res.locals.loggedin &&
+				res.locals.accountData &&
+				res.locals.accountData.account_id === parseInt(account_id)
+			) {
+				const payload = { ...res.locals.accountData, ...refreshed }
+				delete payload.account_password
+				const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 })
+				if (process.env.NODE_ENV === 'development') {
+					res.cookie('jwt', accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
+				} else {
+					res.cookie('jwt', accessToken, { httpOnly: true, secure: true, maxAge: 3600 * 1000 })
+				}
+			}
+			req.flash('notice', 'Account information updated successfully.')
+			return res.redirect('/account/')
+		} else {
+			req.flash('error', 'Sorry, the account update failed.')
+			return res.status(400).render('account/update-account', {
+				title: 'Update Account Information',
+				nav,
+				errors: null,
+				account_id,
+				account_firstname,
+				account_lastname,
+				account_email
+			})
+		}
+	} catch (error) {
+		req.flash('error', 'An unexpected error occurred while updating your account.')
+		return res.status(500).render('account/update-account', {
+			title: 'Update Account Information',
+			nav,
+			errors: null,
+			account_id,
+			account_firstname,
+			account_lastname,
+			account_email
+		})
+	}
+}
+
+/* ****************************************
+ *  Process Password Change
+ * *************************************** */
+async function updateAccountPassword(req, res, next) {
+	const { account_id, account_password } = req.body
+	let nav = await utilities.getNav()
+
+	try {
+		// Hash new password
+		const hashed = await bcrypt.hash(account_password, 10)
+		const result = await accountModel.updateAccountPassword(account_id, hashed)
+
+		if (result) {
+			req.flash('notice', 'Password updated successfully.')
+			return res.redirect('/account/')
+		} else {
+			req.flash('error', 'Sorry, the password update failed.')
+			// Get account data for sticky values
+			const acct = await accountModel.getAccountById(account_id)
+			return res.status(400).render('account/update-account', {
+				title: 'Update Account Information',
+				nav,
+				errors: null,
+				account_id,
+				account_firstname: acct?.account_firstname,
+				account_lastname: acct?.account_lastname,
+				account_email: acct?.account_email
+			})
+		}
+	} catch (error) {
+		req.flash('error', 'An unexpected error occurred while changing your password.')
+		const acct = await accountModel.getAccountById(account_id)
+		return res.status(500).render('account/update-account', {
+			title: 'Update Account Information',
+			nav,
+			errors: null,
+			account_id,
+			account_firstname: acct?.account_firstname,
+			account_lastname: acct?.account_lastname,
+			account_email: acct?.account_email
+		})
+	}
+}
+
 module.exports = {
 	buildLogin,
 	buildRegister,
@@ -178,5 +284,7 @@ module.exports = {
 	accountLogin,
 	buildAccountManagement,
 	logout,
-	buildUpdateAccount
+	buildUpdateAccount,
+	updateAccountInfo,
+	updateAccountPassword
 }
