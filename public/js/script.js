@@ -1,7 +1,8 @@
 // Show/Hide Password functionality for register form
 // This script runs immediately when loaded (place at bottom of HTML)
 const showPasswordCheckbox = document.getElementById('showPassword')
-const passwordInput = document.getElementById('password')
+// Support both register form (id="password") and account update form (id="account_password")
+const passwordInput = document.getElementById('password') || document.getElementById('account_password')
 
 // Check if both elements exist on the page (register form)
 if (showPasswordCheckbox && passwordInput) {
