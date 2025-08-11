@@ -14,19 +14,19 @@
 		<!-- Validation errors -->
 		<% if (errors) { %>
 		<ul class="error">
-			<% errors.array().forEach(error => { %>
+			<% errors.array().forEach((error) => { %>
 			<li><%= error.msg %></li>
 			<% }) %>
 		</ul>
 		<% } %>
 
-		<!-- Update Account Form -->
+		<!-- Account Update Form -->
 		<div class="update-account__content">
 			<form action="/account/update" method="post" class="update-account__form" novalidate>
 				<!-- Form instructions -->
 				<div class="update-account__instructions">
 					<p class="update-account__instruction-text">
-						<strong>Note:</strong>
+						<strong>Account Update:</strong>
 						Update your account information below. All fields are required.
 					</p>
 				</div>
@@ -85,11 +85,73 @@
 				<!-- Submit Button -->
 				<button type="submit" class="update-account__form-button">Update Account</button>
 			</form>
+		</div>
 
-			<!-- Back to Management Link -->
-			<div class="update-account__navigation">
-				<a href="/account/" class="update-account__back-link">← Back to Account Management</a>
-			</div>
+		<!-- Change Password Form -->
+		<div class="update-account__content">
+			<form action="/account/change-password" method="post" class="update-account__form" novalidate>
+				<!-- Form instructions -->
+				<div class="update-account__instructions">
+					<p class="update-account__instruction-text">
+						<strong>Change Password:</strong>
+						Enter a new password below. This will replace your current password. All password requirements
+						must be met.
+					</p>
+				</div>
+
+				<!-- Password Requirements -->
+				<div class="update-account__password-requirements">
+					<p class="update-account__requirements-title">Password Requirements:</p>
+					<ul class="update-account__requirements-list">
+						<li class="update-account__requirement">12 characters minimum</li>
+						<li class="update-account__requirement">At least 1 capital letter</li>
+						<li class="update-account__requirement">At least 1 number</li>
+						<li class="update-account__requirement">At least 1 special character (@$!%*?&)</li>
+					</ul>
+				</div>
+
+				<!-- Form Grid Layout -->
+				<div class="update-account__form-grid">
+					<!-- New Password -->
+					<div class="update-account__form-group update-account__form-group--full">
+						<label for="account_password" class="update-account__form-label">New Password *</label>
+						<div class="update-account__password-container">
+							<input
+								type="password"
+								id="account_password"
+								name="account_password"
+								class="update-account__form-input"
+								placeholder="Enter your new password"
+								minlength="12"
+								pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$"
+								title="Password must be at least 12 characters long and contain at least one uppercase letter, one number, and one special character"
+								required
+							/>
+							<div class="update-account__show-password">
+								<input
+									type="checkbox"
+									id="showPassword"
+									class="update-account__show-password-checkbox"
+								/>
+								<label for="showPassword" class="update-account__show-password-label">
+									Show Password
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Hidden field for account ID -->
+				<input type="hidden" name="account_id" value="<%= locals.account_id %>" />
+
+				<!-- Submit Button -->
+				<button type="submit" class="update-account__form-button">Change Password</button>
+			</form>
+		</div>
+
+		<!-- Back to Management Link -->
+		<div class="update-account__navigation">
+			<a href="/account/" class="update-account__back-link">← Back to Account Management</a>
 		</div>
 	</div>
 </section>
