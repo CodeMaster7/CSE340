@@ -22,7 +22,16 @@
 
 		<!-- Account Update Form -->
 		<div class="update-account__content">
-			<form action="/account/update" method="post" class="update-account__form" novalidate>
+			<form
+				action="/account/update"
+				method="post"
+				class="update-account__form"
+				id="accountUpdateForm"
+				novalidate
+				data-initial-firstname="<%= locals.account_firstname %>"
+				data-initial-lastname="<%= locals.account_lastname %>"
+				data-initial-email="<%= locals.account_email %>"
+			>
 				<!-- Form instructions -->
 				<div class="update-account__instructions">
 					<p class="update-account__instruction-text">
@@ -83,13 +92,19 @@
 				<input type="hidden" name="account_id" value="<%= locals.account_id %>" />
 
 				<!-- Submit Button -->
-				<button type="submit" class="update-account__form-button">Update Account</button>
+				<button type="submit" class="update-account__form-button" disabled>Update Account</button>
 			</form>
 		</div>
 
 		<!-- Change Password Form -->
 		<div class="update-account__content">
-			<form action="/account/change-password" method="post" class="update-account__form" novalidate>
+			<form
+				action="/account/change-password"
+				method="post"
+				class="update-account__form"
+				id="changePasswordForm"
+				novalidate
+			>
 				<!-- Form instructions -->
 				<div class="update-account__instructions">
 					<p class="update-account__instruction-text">
@@ -145,7 +160,7 @@
 				<input type="hidden" name="account_id" value="<%= locals.account_id %>" />
 
 				<!-- Submit Button -->
-				<button type="submit" class="update-account__form-button">Change Password</button>
+				<button type="submit" class="update-account__form-button" disabled>Change Password</button>
 			</form>
 		</div>
 
@@ -155,3 +170,5 @@
 		</div>
 	</div>
 </section>
+
+<script src="../../js/account-update.js"></script>
