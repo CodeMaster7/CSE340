@@ -178,6 +178,12 @@ async function updateAccountInfo(req, res, next) {
 	const { account_id, account_firstname, account_lastname, account_email } = req.body
 	let nav = await utilities.getNav()
 
+	// Security: only allow updating own account
+	if (!res.locals.accountData || parseInt(account_id) !== res.locals.accountData.account_id) {
+		req.flash('error', 'You can only update your own account information.')
+		return res.redirect('/account/')
+	}
+
 	try {
 		// Update account core fields
 		const updated = await accountModel.updateAccountInfo(
@@ -188,22 +194,25 @@ async function updateAccountInfo(req, res, next) {
 		)
 
 		if (updated) {
-			// Re-query current account data for display
-			const refreshed = await accountModel.getAccountById(account_id)
-			// Update JWT if the logged in user updated their own info
+			// Re-query current account data and refresh JWT safely
+			const refreshed = await accountModel.getAccountById(parseInt(account_id))
 			if (
+				refreshed &&
 				res.locals.loggedin &&
 				res.locals.accountData &&
 				res.locals.accountData.account_id === parseInt(account_id)
 			) {
-				const payload = { ...res.locals.accountData, ...refreshed }
-				delete payload.account_password
-				const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 })
-				if (process.env.NODE_ENV === 'development') {
-					res.cookie('jwt', accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
-				} else {
-					res.cookie('jwt', accessToken, { httpOnly: true, secure: true, maxAge: 3600 * 1000 })
+				const payload = {
+					account_id: refreshed.account_id,
+					account_firstname: refreshed.account_firstname,
+					account_lastname: refreshed.account_lastname,
+					account_email: refreshed.account_email,
+					account_type: refreshed.account_type
 				}
+				const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' })
+				const cookieOpts = { httpOnly: true, maxAge: 3600 * 1000 }
+				if (process.env.NODE_ENV !== 'development') cookieOpts.secure = true
+				res.cookie('jwt', accessToken, cookieOpts)
 			}
 			req.flash('notice', 'Account information updated successfully.')
 			return res.redirect('/account/')
@@ -239,6 +248,12 @@ async function updateAccountInfo(req, res, next) {
 async function updateAccountPassword(req, res, next) {
 	const { account_id, account_password } = req.body
 	let nav = await utilities.getNav()
+
+	// Security: only allow updating own password
+	if (!res.locals.accountData || parseInt(account_id) !== res.locals.accountData.account_id) {
+		req.flash('error', 'You can only update your own account information.')
+		return res.redirect('/account/')
+	}
 
 	try {
 		// Hash new password
