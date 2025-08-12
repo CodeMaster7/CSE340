@@ -2061,6 +2061,27 @@ main {
   margin-bottom: var(--spacing-md);
 }
 
+.favorites__back {
+  margin: var(--spacing-lg) 0 0;
+  text-align: center;
+}
+
+.favorites__back-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+}
+
+.favorites__back-link::before {
+  content: '←';
+  display: inline-block;
+  margin-right: var(--spacing-xs);
+}
+
+.favorites__back-link:hover {
+  text-decoration: underline;
+}
+
 .favorites__grid {
   list-style: none;
   padding: 0;
