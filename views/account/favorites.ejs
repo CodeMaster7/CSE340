@@ -7,8 +7,10 @@
 		</header>
 		<% } else { res.redirect('/') } %>
 
+		<!-- Flash messages -->
 		<div class="favorites__messages"><%- messages() %></div>
 
+		<!-- Validation errors -->
 		<% if (errors) { %>
 		<ul class="error">
 			<% errors.array().forEach((error) => { %>
@@ -17,7 +19,7 @@
 		</ul>
 		<% } %> <% if (favorites && favorites.length) { %>
 		<ul class="favorites__grid">
-			<% favorites.forEach(v => { %>
+			<% favorites.forEach((v) => { %>
 			<li class="favorites__item">
 				<a href="/inv/detail/<%= v.inv_id %>" class="favorites__image-link">
 					<img
@@ -46,5 +48,10 @@
 		<% } else { %>
 		<p class="favorites__empty">You have no favorite vehicles yet.</p>
 		<% } %>
+
+		<!-- Back to Account Management (bottom-centered) -->
+		<p class="favorites__back">
+			<a href="/account/" class="favorites__back-link">Back to Account Management</a>
+		</p>
 	</div>
 </section>
