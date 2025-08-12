@@ -356,6 +356,22 @@ main::after {
     font-size: var(--font-size-lg);
 }
 
+/* Favorites back link - desktop */
+.favorites__back {
+    margin-top: var(--spacing-xxl);
+    text-align: center;
+}
+
+.favorites__back-link {
+    font-size: var(--font-size-lg);
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.favorites__back-link:hover {
+    text-decoration: underline;
+}
+
 /* ================================================================
    FOOTER STYLES - DESKTOP
    ================================================================ */
