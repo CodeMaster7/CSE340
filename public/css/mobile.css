@@ -508,38 +508,58 @@ main {
   padding: var(--spacing-xs) 0;
 }
 
-.navigation__list {
+/* Mobile dropdown behavior */
+.navigation__toggle-checkbox {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.navigation__toggle-button {
+  display: inline-block;
+  color: var(--white);
+  background: transparent;
+  border: 1px solid var(--white);
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  margin-left: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+}
+
+.navigation__dropdown {
+  display: none;
+}
+
+.navigation__toggle-checkbox:checked~.navigation__dropdown {
+  display: block;
+}
+
+/* Style the injected list from getNav inside dropdown as a vertical menu on mobile */
+.navigation__dropdown .navigation__list {
   max-width: var(--container-max-width);
   margin: 0 auto;
   padding-inline-start: 0;
-  display: flex;
+  display: block;
   list-style: none;
-  gap: var(--spacing-sm);
 }
 
-.navigation__item {
-  flex: 1;
+.navigation__dropdown .navigation__item {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.navigation__link {
+.navigation__dropdown .navigation__link {
   display: block;
   text-decoration: none;
   color: var(--white);
-  font-weight: 500;
   padding: 0.75rem var(--spacing-sm);
-  text-align: center;
-  border-radius: var(--border-radius-sm);
-  transition: background-color var(--transition-fast);
 }
 
-.navigation__link:hover {
-  background-color: var(--dark-hover);
-}
-
-.navigation__link:focus {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
-}
+/* Remove old inline/horizontal nav styling for mobile; handled by dropdown rules above */
 
 /* ================================================================
    HERO SECTION STYLES - MOBILE FIRST
@@ -1539,6 +1559,45 @@ main {
 }
 
 /* ================================================================
+   VEHICLE DETAIL - ADD TO FAVORITES (MOBILE FIRST)
+   - Simple, tap-friendly primary button
+   - BEM classes under vehicle-detail-page__*
+   ================================================================ */
+.vehicle-detail-page__favorite-form {
+  margin: var(--spacing-md) 0 var(--spacing-xl);
+  display: flex;
+  justify-content: center;
+}
+
+.vehicle-detail-page__favorite-button {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  width: 100%;
+  max-width: 420px;
+  /* keep it readable on large phones */
+}
+
+.vehicle-detail-page__favorite-button:hover {
+  background-color: var(--primary-hover);
+}
+
+.vehicle-detail-page__favorite-button:active {
+  transform: translateY(1px);
+}
+
+.vehicle-detail-page__favorite-button:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* ================================================================
    INVENTORY MANAGEMENT STYLES - MOBILE FIRST
    ================================================================ */
 .inventory-management {
@@ -1972,4 +2031,112 @@ main {
 .add-inventory__back-link:hover {
   color: var(--primary-hover);
   text-decoration: underline;
+}
+
+/* ================================================================
+   FAVORITES PAGE - MOBILE FIRST
+   ================================================================ */
+.favorites {
+  padding: var(--spacing-lg) 0;
+}
+
+.favorites__container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
+
+.favorites__header {
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+.favorites__title {
+  font-size: var(--font-size-xl);
+  color: var(--text-color);
+  margin: 0;
+}
+
+.favorites__messages {
+  margin-bottom: var(--spacing-md);
+}
+
+.favorites__grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  /* mobile: stacked */
+  gap: var(--spacing-md);
+}
+
+.favorites__item {
+  background-color: var(--white);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-light);
+  overflow: hidden;
+}
+
+.favorites__image-link {
+  display: block;
+}
+
+.favorites__image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.favorites__info {
+  padding: var(--spacing-xs);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+}
+
+.favorites__name {
+  font-size: var(--font-size-md);
+  margin: 0;
+}
+
+.favorites__name-link {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.favorites__name-link:hover {
+  color: var(--primary-color);
+}
+
+.favorites__remove-form {
+  margin: 0;
+}
+
+.favorites__remove-button {
+  background-color: var(--danger-color);
+  color: var(--white);
+  border: none;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.favorites__remove-button:hover {
+  background-color: #991b1b;
+  /* slightly darker */
+}
+
+.favorites__remove-button:active {
+  transform: translateY(1px);
+}
+
+.favorites__remove-button:focus-visible {
+  outline: 2px solid #ef4444;
+  outline-offset: 2px;
 }
