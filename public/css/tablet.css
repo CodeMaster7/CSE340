@@ -17,6 +17,37 @@ main::after {
     padding: 0 var(--spacing-lg);
 }
 
+/* Tablet and up: show nav list inline, hide dropdown toggle */
+.navigation__toggle-button {
+    display: none;
+}
+
+.navigation__dropdown {
+    display: block !important;
+}
+
+.navigation__dropdown .navigation__list {
+    display: flex;
+    gap: 0;
+    justify-content: stretch;
+}
+
+.navigation__dropdown .navigation__item {
+    border-top: none;
+    flex: 1 1 0;
+}
+
+.navigation__dropdown .navigation__link {
+    display: block;
+    text-align: center;
+    border-radius: 0;
+    transition: background-color var(--transition-fast);
+}
+
+.navigation__dropdown .navigation__link:hover {
+    background-color: var(--dark-hover);
+}
+
 .header__brand {
     font-size: 1.8rem;
 }
@@ -284,6 +315,26 @@ main::after {
    ================================================================ */
 .classification-grid {
     grid-template-columns: repeat(2, 1fr);
+}
+
+/* ================================================================
+   FAVORITES PAGE - TABLET STYLES
+   - Make the grid horizontal (2 columns)
+   ================================================================ */
+.favorites__container {
+    padding: 0 var(--spacing-lg);
+}
+
+.favorites__grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.favorites__image {
+    height: 180px;
+}
+
+.favorites__name {
+    font-size: var(--font-size-md);
 }
 
 /* ================================================================
