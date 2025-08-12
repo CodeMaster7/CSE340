@@ -32,6 +32,11 @@
 						Update Account Information
 					</a>
 				</li>
+				<% if (locals.accountData.account_type === 'Client') { %>
+				<li class="account-management__list-item">
+					<a href="/account/favorites" class="account-management__link">My Favorites</a>
+				</li>
+				<% } %>
 			</ul>
 
 			<% if (locals.accountData.account_type === 'Employee' || locals.accountData.account_type === 'Admin') { %>
