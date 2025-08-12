@@ -32,6 +32,22 @@ main::after {
     padding: var(--spacing-md) 0;
 }
 
+/* Desktop: keep dropdown content visible as horizontal list; hide toggle */
+.navigation__toggle-button {
+    display: none;
+}
+
+.navigation__dropdown {
+    display: block !important;
+}
+
+.navigation__dropdown .navigation__list {
+    display: flex;
+    gap: 0;
+    /* remove gaps between tabs */
+    justify-content: stretch;
+}
+
 .header__brand {
     font-size: var(--font-size-xxxl);
 }
@@ -316,6 +332,28 @@ main::after {
    ================================================================ */
 .classification-grid {
     grid-template-columns: repeat(3, 1fr);
+}
+
+/* ================================================================
+   FAVORITES PAGE - DESKTOP STYLES
+   - Horizontal grid (3 columns)
+   ================================================================ */
+.favorites__container {
+    padding: 0 var(--spacing-xxl);
+}
+
+.favorites__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.favorites__image {
+    height: 200px;
+}
+
+.favorites__name {
+    font-size: var(--font-size-lg);
 }
 
 /* ================================================================
