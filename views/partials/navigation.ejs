@@ -1,4 +1,12 @@
-<!-- Navigation -->
-<nav class="navigation">
-	<%- nav %>
+<nav class="navigation" aria-label="Primary">
+    <input
+        type="checkbox"
+        id="navigation-toggle"
+        class="navigation__toggle-checkbox"
+        aria-label="Toggle navigation"
+    />
+    <label for="navigation-toggle" class="navigation__toggle-button">Menu</label>
+    <div class="navigation__dropdown">
+        <%- nav %>
+    </div>
 </nav>
