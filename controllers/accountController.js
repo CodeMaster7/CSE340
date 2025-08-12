@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const accountModel = require('../models/account-model')
+const favoriteModel = require('../models/favorite-model')
 const utilities = require('../utilities/')
 require('dotenv').config()
 
@@ -38,6 +39,75 @@ async function buildAccountManagement(req, res, next) {
 		nav,
 		errors: null
 	})
+}
+
+/* ****************************************
+ *  Deliver favorites view (Client only)
+ * *************************************** */
+async function buildFavorites(req, res, next) {
+	const accountId = res.locals.accountData?.account_id
+	if (!accountId) {
+		req.flash('error', 'Please log in.')
+		return res.redirect('/account/login')
+	}
+	const nav = await utilities.getNav()
+	const favorites = await favoriteModel.listFavoritesByAccount(accountId)
+	res.render('account/favorites', {
+		title: 'My Favorites',
+		nav,
+		errors: null,
+		favorites
+	})
+}
+
+/* ****************************************
+ *  Add vehicle to favorites (Client only)
+ * *************************************** */
+async function addFavorite(req, res, next) {
+	const accountId = res.locals.accountData?.account_id
+	const invId = parseInt(req.params.invId)
+	if (!accountId) {
+		req.flash('error', 'Please log in.')
+		return res.redirect('/account/login')
+	}
+	if (!Number.isInteger(invId)) {
+		req.flash('error', 'Invalid vehicle.')
+		return res.redirect('back')
+	}
+	try {
+		await favoriteModel.addFavorite(accountId, invId)
+		req.flash('notice', 'Added to favorites.')
+	} catch (e) {
+		req.flash('error', 'Could not add favorite.')
+	}
+	return res.redirect(303, '/account/favorites')
+}
+
+/* ****************************************
+ *  Remove vehicle from favorites (Client only)
+ * *************************************** */
+async function removeFavorite(req, res, next) {
+	const accountId = res.locals.accountData?.account_id
+	const invId = parseInt(req.params.invId)
+	if (!accountId) {
+		req.flash('error', 'Please log in.')
+		return res.redirect('/account/login')
+	}
+	if (!Number.isInteger(invId)) {
+		req.flash('error', 'Invalid vehicle.')
+		return res.redirect('/account/favorites')
+	}
+	try {
+		const removed = await favoriteModel.removeFavorite(accountId, invId)
+		if (removed) {
+			req.flash('notice', 'Removed from favorites.')
+		} else {
+			req.flash('error', 'Favorite not found.')
+		}
+	} catch (e) {
+		req.flash('error', 'Could not remove favorite.')
+	}
+	return res.redirect('/account/favorites')
 }
 
 /* ****************************************
@@ -301,5 +371,8 @@ module.exports = {
 	logout,
 	buildUpdateAccount,
 	updateAccountInfo,
-	updateAccountPassword
+	updateAccountPassword,
+	buildFavorites,
+	addFavorite,
+	removeFavorite
 }
