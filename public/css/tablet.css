@@ -337,6 +337,22 @@ main::after {
     font-size: var(--font-size-md);
 }
 
+/* Favorites back link - tablet */
+.favorites__back {
+    margin-top: var(--spacing-xl);
+    text-align: center;
+}
+
+.favorites__back-link {
+    font-size: var(--font-size-md);
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.favorites__back-link:hover {
+    text-decoration: underline;
+}
+
 /* ================================================================
    FOOTER STYLES - TABLET
    ================================================================ */
