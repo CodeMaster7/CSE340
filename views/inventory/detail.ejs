@@ -13,5 +13,13 @@
 
 		<!-- Vehicle detail content -->
 		<div class="vehicle-detail-page__content"><%- vehicleHTML %></div>
+
+		<!-- Favorites: add button (visible to logged-in Clients only) -->
+		<% if (locals && locals.loggedin && locals.accountData && locals.accountData.account_type === 'Client' && typeof
+		inv_id !== 'undefined') { %>
+		<form action="/account/favorites/<%= inv_id %>" method="post" class="vehicle-detail-page__favorite-form">
+			<button type="submit" class="vehicle-detail-page__favorite-button">Add to favorites</button>
+		</form>
+		<% } %>
 	</div>
 </section>
