@@ -36,6 +36,15 @@ router.get('/logout', utilities.handleErrors(accountController.logout))
 // Route to build update account view
 router.get('/update/:accountId', utilities.checkLogin, utilities.handleErrors(accountController.buildUpdateAccount))
 
+// Favorites: list (Client only)
+router.get('/favorites', utilities.checkClient, utilities.handleErrors(accountController.buildFavorites))
+
+// Favorites: add (Client only)
+router.post('/favorites/:invId', utilities.checkClient, utilities.handleErrors(accountController.addFavorite))
+
+// Favorites: remove (Client only)
+router.post('/favorites/:invId/delete', utilities.checkClient, utilities.handleErrors(accountController.removeFavorite))
+
 // Route to process account info update
 router.post(
 	'/update',
