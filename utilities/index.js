@@ -227,3 +227,17 @@ Util.checkAdminAuth = (req, res, next) => {
 }
 
 module.exports = Util
+
+/* ****************************************
+ *  Check Client (account_type === 'Client')
+ * ************************************ */
+Util.checkClient = (req, res, next) => {
+	if (!res.locals.loggedin) {
+		req.flash('error', 'Please log in.')
+		return res.redirect('/account/login')
+	}
+	const accountType = res.locals.accountData?.account_type
+	if (accountType === 'Client') return next()
+	req.flash('error', 'Clients only.')
+	return res.redirect('/account/login')
+}
