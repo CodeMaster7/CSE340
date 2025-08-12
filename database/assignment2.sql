@@ -46,4 +46,33 @@ UPDATE inventory
 SET inv_image = REPLACE(inv_image, 'images/', 'images/vehicles/'),
     inv_thumbnail = REPLACE(inv_thumbnail, 'images/', 'images/vehicles/');
 
+-- ================================================================
+-- FAVORITES (Examples to exercise new table)
+-- ================================================================
 
+-- Create a favorite (example values)
+-- $1 account_id, $2 inv_id when used in prepared statements
+INSERT INTO public.favorite (account_id, inv_id) VALUES (1, 2)
+ON CONFLICT (account_id, inv_id) DO NOTHING RETURNING favorite_id, created_at;
+
+-- Remove a favorite
+DELETE FROM public.favorite WHERE account_id = 1 AND inv_id = 2 RETURNING favorite_id;
+
+-- ================================================================
+-- LIST FAVORITES FOR AN ACCOUNT (JOIN WITH INVENTORY DETAILS)
+-- Run in pgAdmin 4 to view a user's favorites
+-- Replace :account_id with the target account id
+-- ================================================================
+
+-- 1) Do you have any favorites at all?
+SELECT * FROM public.favorite ORDER BY created_at DESC;
+
+-- 2) What accounts exist?
+SELECT account_id, account_email, account_type FROM public.account ORDER BY account_id;
+
+-- 3) Join across to see everything (no filter)
+SELECT a.account_email, i.inv_make, i.inv_model, f.created_at
+FROM public.favorite f
+JOIN public.account a ON a.account_id = f.account_id
+JOIN public.inventory i ON i.inv_id = f.inv_id
+ORDER BY f.created_at DESC;
