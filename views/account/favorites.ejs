@@ -1,0 +1,50 @@
+<!-- Favorites view with BEM structure -->
+<section class="favorites">
+	<div class="favorites__container">
+		<% if (title) { %>
+		<header class="favorites__header">
+			<h1 class="favorites__title"><%= title %></h1>
+		</header>
+		<% } else { res.redirect('/') } %>
+
+		<div class="favorites__messages"><%- messages() %></div>
+
+		<% if (errors) { %>
+		<ul class="error">
+			<% errors.array().forEach((error) => { %>
+			<li><%= error.msg %></li>
+			<% }) %>
+		</ul>
+		<% } %> <% if (favorites && favorites.length) { %>
+		<ul class="favorites__grid">
+			<% favorites.forEach(v => { %>
+			<li class="favorites__item">
+				<a href="/inv/detail/<%= v.inv_id %>" class="favorites__image-link">
+					<img
+						src="<%= v.inv_thumbnail %>"
+						alt="<%= v.inv_make %> <%= v.inv_model %>"
+						class="favorites__image"
+					/>
+				</a>
+				<div class="favorites__info">
+					<h2 class="favorites__name">
+						<a href="/inv/detail/<%= v.inv_id %>" class="favorites__name-link">
+							<%= v.inv_make %> <%= v.inv_model %> (<%= v.inv_year %>)
+						</a>
+					</h2>
+					<form
+						action="/account/favorites/<%= v.inv_id %>/delete"
+						method="post"
+						class="favorites__remove-form"
+					>
+						<button type="submit" class="favorites__remove-button">Remove</button>
+					</form>
+				</div>
+			</li>
+			<% }) %>
+		</ul>
+		<% } else { %>
+		<p class="favorites__empty">You have no favorite vehicles yet.</p>
+		<% } %>
+	</div>
+</section>
